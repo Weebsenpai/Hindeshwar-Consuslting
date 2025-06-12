@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { SheetClose } from "@/components/ui/sheet";
+import type { LucideIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,13 +25,11 @@ export interface NavLink {
   disabled?: boolean;
 }
 
-export interface LinkGroup {
+export interface ServiceItem {
+  icon: LucideIcon;
   title: string;
-  links: NavLink[];
-}
-
-export interface MegaMenuColumn {
-  groups: LinkGroup[];
+  description: string;
+  href: string;
 }
 
 export interface NavItem {
@@ -38,7 +37,7 @@ export interface NavItem {
   href?: string;
   disabled?: boolean;
   children?: NavLink[]; 
-  megaMenuColumns?: MegaMenuColumn[]; 
+  serviceItems?: ServiceItem[]; // New property for the gosite-style mega menu
 }
 
 interface NavLinksProps {
@@ -72,8 +71,8 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
       {items.map((item) => {
         const isActive = item.href ? pathname.startsWith(item.href) : false;
 
-        if (!isMobile && item.megaMenuColumns && item.megaMenuColumns.length > 0) {
-          // DESKTOP MEGA MENU (HoverCard)
+        if (!isMobile && item.serviceItems && item.serviceItems.length > 0) {
+          // DESKTOP "GOSITE-STYLE" MEGA MENU (HoverCard)
           return (
             <HoverCard key={item.label} openDelay={50} closeDelay={150}>
               <HoverCardTrigger asChild>
@@ -95,32 +94,30 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
               <HoverCardContent
                 align="center"
                 sideOffset={10} 
-                className="w-auto max-w-xl p-4 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border" 
+                className="w-auto max-w-xl p-5 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border" 
+                // Note: The triangular caret/arrow from the example image requires custom CSS/SVG
+                // and is not implemented here for simplicity.
               >
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                  {item.megaMenuColumns.map((column, columnIndex) => (
-                    <div key={columnIndex} className="space-y-4">
-                      {column.groups.map((group) => (
-                        <div key={group.title}>
-                          <h4 className="text-[0.9rem] font-semibold text-card-foreground mb-2">
-                            {group.title}
-                          </h4>
-                          <ul className="space-y-1.5 mt-1.5">
-                            {group.links.map((link) => (
-                              <li key={link.href}>
-                                <Link
-                                  href={link.href}
-                                  className="text-sm text-card-foreground hover:text-primary transition-colors duration-150"
-                                  prefetch={false}
-                                >
-                                  {link.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
+                  {item.serviceItems.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      className="group flex items-start gap-3 p-3 -m-3 rounded-lg hover:bg-accent/60 transition-colors duration-150"
+                      prefetch={false}
+                    >
+                      <div className="text-primary mt-0.5 flex-shrink-0">
+                        <service.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-150 text-sm">
+                          {service.title}
+                        </p>
+                        <p className="text-xs text-muted-foreground group-hover:text-card-foreground/90 transition-colors duration-150">
+                          {service.description}
+                        </p>
+                      </div>
+                    </Link>
                   ))}
                 </div>
               </HoverCardContent>
@@ -194,25 +191,31 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
             </DropdownMenu>
           );
         } else if (item.href) {
-          // REGULAR LINK (Desktop or Mobile)
-          if (isMobile && item.megaMenuColumns && item.href) { 
-             const allLinks: NavLink[] = [];
-             item.megaMenuColumns.forEach(col => col.groups.forEach(group => allLinks.push(...group.links)));
-             
+          // REGULAR LINK or MOBILE "GOSITE-STYLE" LIST
+          if (isMobile && item.serviceItems && item.serviceItems.length > 0) { 
+             // For mobile, render the serviceItems as a list under the main "Services" link.
              return (
-                <div key={item.label}>
+                <div key={item.label} className="w-full">
                     <Link 
                         href={item.href} 
                         className={cn(navLinkClasses(item.href, item.disabled, false, isActive), "font-semibold text-foreground flex items-center justify-between w-full")}
                         prefetch={false}
                     >
                      {item.label}
+                     {/* Optionally add a chevron if you want to indicate it expands, but it won't be a separate dropdown */}
                     </Link>
-                    <div className="ml-4 mt-1 space-y-1 border-l border-border pl-4">
-                    {allLinks.map(link => (
-                         <SheetClose asChild key={link.href}>
-                             <Link href={link.href} className={navLinkClasses(link.href, link.disabled, false, pathname.startsWith(link.href))}>
-                                 {link.label}
+                    <div className="ml-0 mt-1 space-y-1 pt-1">
+                    {item.serviceItems.map(serviceLink => (
+                         <SheetClose asChild key={serviceLink.href}>
+                             <Link 
+                                href={serviceLink.href} 
+                                className={cn(navLinkClasses(serviceLink.href, item.disabled, false, pathname.startsWith(serviceLink.href)), "flex items-center gap-3 p-2 rounded-md hover:bg-accent/60")}
+                             >
+                                <serviceLink.icon className="h-5 w-5 text-primary flex-shrink-0" />
+                                <div>
+                                  <span className="block text-sm text-foreground">{serviceLink.title}</span>
+                                  <span className="block text-xs text-muted-foreground">{serviceLink.description}</span>
+                                </div>
                              </Link>
                          </SheetClose>
                      ))}

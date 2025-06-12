@@ -2,58 +2,60 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Mountain, Search } from "lucide-react";
+import { Menu, Mountain, Search, MapPin, Star, CalendarCheck, UserCircle2, MessageSquareText, MonitorSmartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
+
+const serviceItemsForMegaMenu = [
+  {
+    icon: MapPin,
+    title: "Digital Strategy",
+    description: "Navigate the digital landscape effectively.",
+    href: "/services/digital-transformation/strategy-analysis",
+  },
+  {
+    icon: Star,
+    title: "Data Insights",
+    description: "Leverage data for impactful decisions.",
+    href: "/services/data-analytics/strategy-analysis",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Process Optimization",
+    description: "Streamline operations for peak efficiency.",
+    href: "/services/operational-excellence/process-reengineering",
+  },
+  {
+    icon: UserCircle2,
+    title: "Customer Engagement",
+    description: "Enhance sales & manage channels.",
+    href: "/services/revenue-growth/sales-channel-management",
+  },
+  {
+    icon: MessageSquareText,
+    title: "Innovation Hub",
+    description: "Foster creativity and new solutions.",
+    href: "/services/digital-transformation/innovation",
+  },
+  {
+    icon: MonitorSmartphone,
+    title: "Digital Delivery",
+    description: "Execute your digital projects.",
+    href: "/services/digital-transformation/delivery",
+  },
+];
+
 
 const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services", 
-    megaMenuColumns: [
-      { // Column 1
-        groups: [
-          {
-            title: "Data & Analytics",
-            links: [
-              { href: "/services/data-analytics/strategy-analysis", label: "Strategy & Analysis" },
-              { href: "/services/data-analytics/architecture-centralization", label: "Architecture & Modelling" },
-              { href: "/services/data-analytics/data-visualization", label: "Data Visualisation" },
-            ],
-          },
-          {
-            title: "Operational Excellence",
-            links: [
-              { href: "/services/operational-excellence/process-reengineering", label: "Business Process Re-engineering" },
-              { href: "/services/operational-excellence/operating-model", label: "Operating Model" },
-              { href: "/services/operational-excellence/supply-chain", label: "Supply Chain Management" },
-            ],
-          },
-        ],
-      },
-      { // Column 2
-        groups: [
-          {
-            title: "Digital Transformation",
-            links: [
-              { href: "/services/digital-transformation/strategy-analysis", label: "Strategy & Analysis (Digital)" },
-              { href: "/services/digital-transformation/innovation", label: "Innovation" },
-              { href: "/services/digital-transformation/delivery", label: "Digital Transformation Delivery" },
-            ],
-          },
-          {
-            title: "Revenue Growth",
-            links: [
-              { href: "/services/revenue-growth/sales-channel-management", label: "Sales & Channel Management" },
-              { href: "/services/revenue-growth/product-portfolio", label: "Product & Portfolio Management" },
-              { href: "/services/revenue-growth/b2b-go-to-market", label: "B2B Go-To-Market" },
-            ],
-          },
-        ],
-      },
-    ],
+    href: "/services",
+    // New structure for the 2x3 grid inspired mega menu
+    serviceItems: serviceItemsForMegaMenu,
+    // Old megaMenuColumns structure is replaced by serviceItems for this NavItem
+    // megaMenuColumns: [ /* ... existing complex structure ... */ ],
   },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
