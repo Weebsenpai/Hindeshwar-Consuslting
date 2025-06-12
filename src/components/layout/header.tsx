@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, MountainIcon } from "lucide-react";
+import { Menu, MountainIcon, Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
@@ -11,9 +11,9 @@ const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services", // Fallback for mobile and base for active state
+    href: "/services", 
     megaMenuColumns: [
-      { // Column 1: Data & Analytics
+      { 
         groups: [
           {
             title: "Data & Analytics",
@@ -23,9 +23,16 @@ const navItems: NavItem[] = [
               { href: "/services/data-analytics/data-visualization", label: "Data Visualisation" },
             ],
           },
+           {
+            title: "ESG",
+            links: [
+              { href: "/services/esg/sustainability-strategy", label: "Sustainability Strategy" },
+              { href: "/services/esg/climate-action", label: "Climate Action & Decarbonisation" },
+            ],
+          },
         ],
       },
-      { // Column 2: Operational Excellence
+      { 
         groups: [
           {
             title: "Operational Excellence",
@@ -35,9 +42,16 @@ const navItems: NavItem[] = [
               { href: "/services/operational-excellence/supply-chain", label: "Supply Chain Management" },
             ],
           },
+           {
+            title: "Strategy",
+            links: [
+                { href: "/services/strategy/business-strategy", label: "Business Strategy" },
+                { href: "/services/strategy/digital-strategy", label: "Digital Strategy" },
+            ],
+          },
         ],
       },
-      { // Column 3: Digital Transformation
+      { 
         groups: [
           {
             title: "Digital Transformation",
@@ -47,9 +61,16 @@ const navItems: NavItem[] = [
               { href: "/services/digital-transformation/delivery", label: "Digital Transformation Delivery" },
             ],
           },
+           {
+            title: "Organisational Effectiveness",
+            links: [
+                { href: "/services/organisational-effectiveness/organisation-design", label: "Organisation Design" },
+                { href: "/services/organisational-effectiveness/operating-model", label: "Operating Model (Org Effect.)" },
+            ],
+          },
         ],
       },
-      { // Column 4: Revenue Growth
+      { 
         groups: [
           {
             title: "Revenue Growth",
@@ -59,45 +80,72 @@ const navItems: NavItem[] = [
               { href: "/services/revenue-growth/b2b-go-to-market", label: "B2B Go-To-Market" },
             ],
           },
+            {
+            title: "Business Transformation",
+            links: [
+              { href: "/services/business-transformation/transformation-strategy", label: "Transformation Strategy" },
+              { href: "/services/business-transformation/transformation-planning", label: "Transformation Planning" },
+            ],
+          },
         ],
       },
     ],
   },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
-  { href: "/cta-generator", label: "CTA Generator" },
+  { href: "/cta-generator", label: "AI Tools" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background shadow-md">
+      <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <MountainIcon className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold text-primary">Apex Consulting</span>
+          {/* Using MountainIcon as a placeholder for a more complex logo like Renoir's */}
+          <MountainIcon className="h-8 w-8 text-primary" /> 
+          <span className="font-headline text-2xl font-bold text-foreground">Hindeshwar Consulting</span>
         </Link>
-        <nav className="hidden items-center gap-2 md:flex">
-          <NavLinks items={navItems} />
-        </nav>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="md:hidden">
-              <Menu className="h-6 w-6" />
-              <span className="sr-only">Toggle navigation menu</span>
+        
+        <div className="flex items-center gap-4">
+          <nav className="hidden items-center gap-3 md:flex">
+            <NavLinks items={navItems} />
+          </nav>
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="ghost" size="icon" aria-label="Search" className="text-foreground hover:text-primary">
+              <Search className="h-5 w-5" />
             </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <div className="grid gap-4 p-4">
-              <Link href="/" className="flex items-center gap-2 mb-4" prefetch={false}>
-                <MountainIcon className="h-6 w-6 text-primary" />
-                <span className="font-headline text-xl font-bold text-primary">Apex Consulting</span>
-              </Link>
-              <nav className="grid gap-2">
-                <NavLinks items={navItems} isMobile={true} />
-              </nav>
-            </div>
-          </SheetContent>
-        </Sheet>
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 px-6 py-3 rounded-lg">
+              <Link href="/contact">Talk To A Consultant <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            </Button>
+          </div>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="md:hidden text-foreground hover:text-primary border-border hover:border-primary">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-background text-foreground border-border">
+              <div className="grid gap-4 p-4">
+                <Link href="/" className="flex items-center gap-2 mb-4" prefetch={false}>
+                  <MountainIcon className="h-6 w-6 text-primary" />
+                  <span className="font-headline text-xl font-bold text-foreground">Hindeshwar Consulting</span>
+                </Link>
+                <nav className="grid gap-2">
+                  <NavLinks items={navItems} isMobile={true} />
+                </nav>
+                <div className="mt-4 flex flex-col gap-2">
+                   <Button variant="ghost" size="lg" aria-label="Search" className="text-foreground hover:text-primary justify-start">
+                    <Search className="mr-2 h-5 w-5" /> Search
+                  </Button>
+                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 w-full">
+                    <Link href="/contact">Talk To A Consultant <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                  </Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );

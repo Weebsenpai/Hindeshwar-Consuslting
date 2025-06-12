@@ -65,13 +65,13 @@ export function CtaGeneratorForm() {
 
   return (
     <div className="space-y-8">
-      <Card className="shadow-lg">
+      <Card className="shadow-xl bg-background border-border">
         <CardHeader>
-          <CardTitle className="font-headline text-2xl text-primary flex items-center">
-            <Wand2 className="mr-2 h-6 w-6" />
+          <CardTitle className="font-headline text-2xl text-foreground flex items-center">
+            <Wand2 className="mr-2 h-6 w-6 text-primary" />
             Generate CTA Suggestions
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-muted-foreground">
             Describe a section of your webpage, and our AI will suggest compelling calls to action.
           </CardDescription>
         </CardHeader>
@@ -83,11 +83,11 @@ export function CtaGeneratorForm() {
                 name="pageSectionDescription"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Page Section Description</FormLabel>
+                    <FormLabel className="text-foreground">Page Section Description</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="e.g., A hero section for a new SAAS product that helps teams collaborate better."
-                        className="min-h-[120px]"
+                        className="min-h-[120px] bg-input text-input-foreground border-border focus:border-primary"
                         {...field}
                       />
                     </FormControl>
@@ -95,7 +95,7 @@ export function CtaGeneratorForm() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isLoading} className="text-lg px-6 py-3">
+              <Button type="submit" disabled={isLoading} className="text-lg px-6 py-3 rounded-lg">
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -118,14 +118,14 @@ export function CtaGeneratorForm() {
       )}
 
       {!isLoading && suggestions.length > 0 && (
-        <Card className="shadow-lg">
+        <Card className="shadow-xl bg-background border-border">
           <CardHeader>
-            <CardTitle className="font-headline text-xl text-primary">Suggested CTAs</CardTitle>
+            <CardTitle className="font-headline text-xl text-foreground">Suggested CTAs</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
               {suggestions.map((suggestion, index) => (
-                <li key={index} className="p-4 border rounded-md bg-primary/5 text-primary-dark">
+                <li key={index} className="p-4 border border-border rounded-md bg-secondary text-secondary-foreground">
                   <p className="text-sm sm:text-base">{suggestion}</p>
                 </li>
               ))}

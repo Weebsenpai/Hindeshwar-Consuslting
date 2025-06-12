@@ -2,72 +2,84 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Briefcase, BarChart3, Lightbulb, ArrowRight } from "lucide-react";
+import { Briefcase, BarChart3, Lightbulb, ArrowRight, Users, Brain } from "lucide-react";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-primary/10 via-background to-background">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url(https://placehold.co/1920x1080.png?text=.)", backgroundSize: "cover", backgroundPosition: "center" }} data-ai-hint="abstract pattern"></div>
+      <section className="relative py-32 md:py-48 bg-background text-foreground">
+        <div className="absolute inset-0">
+          <Image
+            src="https://placehold.co/1920x1080.png"
+            alt="Global business strategy"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-20"
+            data-ai-hint="abstract business"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
+        </div>
         <div className="container relative z-10 text-center">
-          <h1 className="font-headline text-4xl font-extrabold tracking-tight text-primary sm:text-5xl md:text-6xl lg:text-7xl">
-            Elevate Your Business with <span className="text-accent">Apex Consulting</span>
+          <h1 className="font-headline text-4xl font-black tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+            Drive Change. Deliver Excellence. <br className="hidden md:block" /> <span className="text-primary">Hindeshwar Consulting</span>.
           </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl md:text-2xl">
-            Strategic insights and expert guidance to help you achieve peak performance and sustainable growth.
+          <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground sm:text-xl md:text-2xl">
+            We partner with organizations to deliver exceptional outcomes and sustainable change through strategic insights and expert execution.
           </p>
-          <div className="mt-10 flex justify-center gap-4">
-            <Button asChild size="lg" className="text-lg px-8 py-6">
-              <Link href="/services">Our Services <ArrowRight className="ml-2 h-5 w-5" /></Link>
+          <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Button asChild size="lg" className="text-lg px-8 py-7 rounded-lg bg-primary text-primary-foreground hover:bg-primary/80 w-full sm:w-auto">
+              <Link href="/services">Explore Our Expertise <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 border-primary text-primary hover:bg-primary/10">
-              <Link href="/contact">Get in Touch</Link>
+            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-7 rounded-lg border-primary text-primary hover:bg-primary/10 hover:text-primary-foreground w-full sm:w-auto">
+              <Link href="/contact">Read Insights</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 md:py-24 bg-background">
+      <section id="services" className="py-16 md:py-24 bg-secondary text-secondary-foreground">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">Our Core Services</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Tailored solutions designed to address your unique challenges and opportunities.
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">Our Core Services</h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Tailored solutions designed to address your unique challenges and drive transformative growth.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                icon: <Briefcase className="h-10 w-10 text-accent" />,
-                title: "Strategic Planning",
+                icon: <Brain className="h-10 w-10 text-primary" />,
+                title: "Strategic Advisory",
                 description: "Develop robust strategies to navigate market complexities and achieve long-term objectives.",
-                href: "/services#strategic-planning"
+                href: "/services/strategy/business-strategy"
               },
               {
-                icon: <BarChart3 className="h-10 w-10 text-accent" />,
+                icon: <BarChart3 className="h-10 w-10 text-primary" />,
                 title: "Operational Excellence",
                 description: "Optimize your operations for efficiency, productivity, and cost-effectiveness.",
-                href: "/services#operational-excellence"
+                href: "/services/operational-excellence/operating-model" 
               },
               {
-                icon: <Lightbulb className="h-10 w-10 text-accent" />,
-                title: "Innovation & Growth",
+                icon: <Lightbulb className="h-10 w-10 text-primary" />,
+                title: "Digital Transformation",
                 description: "Foster innovation and identify new growth avenues to stay ahead of the curve.",
-                href: "/services#innovation-growth"
+                href: "/services/digital-transformation/innovation"
               },
             ].map((service) => (
-              <Card key={service.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardHeader className="items-center text-center p-6 bg-primary/5">
-                  {service.icon}
-                  <CardTitle className="mt-4 text-2xl font-headline text-primary">{service.title}</CardTitle>
+              <Card key={service.title} className="flex flex-col bg-background text-foreground overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-lg border-border">
+                <CardHeader className="items-center text-center p-8">
+                  <div className="p-4 bg-primary/10 rounded-full mb-4 inline-block">
+                    {service.icon}
+                  </div>
+                  <CardTitle className="mt-2 text-2xl font-headline text-foreground">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow p-6 text-center">
                   <CardDescription className="text-base text-muted-foreground">{service.description}</CardDescription>
                 </CardContent>
                 <div className="p-6 pt-0 text-center">
-                   <Button asChild variant="link" className="text-primary hover:text-accent">
+                   <Button asChild variant="link" className="text-primary hover:text-accent font-semibold">
                     <Link href={service.href}>Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </div>
@@ -78,24 +90,24 @@ export default function HomePage() {
       </section>
 
       {/* About Us Snippet Section */}
-      <section className="py-16 md:py-24 bg-muted/40">
+      <section className="py-16 md:py-24 bg-background text-foreground">
         <div className="container">
           <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">About Apex Consulting</h2>
-              <p className="mt-6 text-lg text-muted-foreground">
-                At Apex Consulting, we are passionate about helping businesses thrive. Our team of experienced consultants brings a wealth of knowledge and a commitment to delivering measurable results. We partner with you to understand your vision and challenges, crafting bespoke solutions that drive success.
+            <div className="order-last lg:order-first">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-foreground">About Hindeshwar Consulting</h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                At Hindeshwar Consulting, we are passionate about helping businesses thrive. Our team of experienced consultants brings a wealth of knowledge and a commitment to delivering measurable results. We partner with you to understand your vision and challenges, crafting bespoke solutions that drive success.
               </p>
               <div className="mt-8">
-                <Button asChild size="lg" className="text-lg">
+                <Button asChild size="lg" className="text-lg rounded-lg bg-primary text-primary-foreground hover:bg-primary/80">
                   <Link href="/about">Discover More About Us</Link>
                 </Button>
               </div>
             </div>
-            <div className="aspect-video overflow-hidden rounded-lg shadow-xl">
+            <div className="aspect-video overflow-hidden rounded-lg shadow-2xl">
               <Image
                 src="https://placehold.co/600x400.png"
-                alt="Team working collaboratively"
+                alt="Team working collaboratively at Hindeshwar Consulting"
                 width={600}
                 height={400}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
@@ -111,10 +123,10 @@ export default function HomePage() {
         <div className="container text-center">
           <h2 className="text-3xl font-headline font-bold tracking-tight sm:text-4xl">Ready to Reach New Heights?</h2>
           <p className="mt-6 max-w-xl mx-auto text-lg sm:text-xl">
-            Let Apex Consulting be your partner in success. Contact us today for a consultation and let's discuss how we can help your business soar.
+            Let Hindeshwar Consulting be your partner in success. Contact us today for a consultation and let's discuss how we can help your business soar.
           </p>
           <div className="mt-10">
-            <Button asChild size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
+            <Button asChild size="lg" variant="secondary" className="bg-background text-primary hover:bg-muted/80 text-lg px-8 py-6 rounded-lg">
               <Link href="/contact">Schedule a Consultation</Link>
             </Button>
           </div>

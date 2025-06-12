@@ -4,85 +4,86 @@
 
 @layer base {
   :root {
-    --background: 220 20% 98%; /* Very light, slightly cool gray */
-    --foreground: 220 25% 15%; /* Dark grayish blue */
+    --background: 220 15% 12%; /* Dark cool gray/charcoal */
+    --foreground: 220 10% 88%; /* Light gray for text */
 
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 220 25% 15%; /* Dark grayish blue */
+    --card: 0 0% 100%; /* White for cards/popovers like mega menu */
+    --card-foreground: 220 25% 15%; /* Dark text for cards */
 
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 220 25% 15%; /* Dark grayish blue */
+    --popover: 0 0% 100%; /* White for popovers */
+    --popover-foreground: 220 25% 15%; /* Dark text for popovers */
 
-    --primary: 210 70% 50%; /* Vibrant, professional blue */
-    --primary-foreground: 210 40% 98%; /* Very light blue/off-white */
+    --primary: 130 60% 48%; /* Vibrant Green */
+    --primary-foreground: 220 0% 100%; /* White text on green */
 
-    --secondary: 210 40% 92%; /* Light grayish blue */
-    --secondary-foreground: 210 70% 40%; /* Darker, less saturated blue */
+    --secondary: 220 15% 25%; /* Darker shade of background for secondary elements */
+    --secondary-foreground: 220 10% 75%; /* Slightly darker light gray */
 
-    --muted: 220 20% 94%; /* Light gray */
-    --muted-foreground: 220 15% 45%; /* Medium gray */
+    --muted: 220 15% 20%; /* Muted dark shade */
+    --muted-foreground: 220 10% 60%; /* Muted light gray */
 
-    --accent: 30 100% 55%; /* Warm, inviting orange */
-    --accent-foreground: 30 100% 10%; /* Dark brown/black for text on orange */
+    --accent: 130 65% 55%; /* Slightly brighter Green for accents if needed */
+    --accent-foreground: 220 0% 100%; /* White text on accent */
 
-    --destructive: 0 70% 50%; /* A clear, but not overly harsh red */
-    --destructive-foreground: 0 0% 98%; /* White/Off-white for text on destructive */
+    --destructive: 0 70% 50%; 
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 88%; /* Light cool gray border */
-    --input: 220 15% 96%; /* Slightly lighter input background */
-    --ring: 210 70% 55%; /* Primary blue for focus rings */
+    --border: 220 15% 30%; /* Border for dark theme */
+    --input: 220 15% 18%; /* Dark input background */
+    --input-foreground: 220 10% 88%; /* Light text for input */
+    --ring: 130 60% 55%; /* Green for focus rings */
 
     --radius: 0.5rem;
 
     /* Sidebar variables (kept from original for shadcn components that might use them) */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 130 60% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 15% 25%;
+    --sidebar-ring: 130 60% 55%;
   }
 
   .dark {
-    /* Define a basic dark theme based on the new light theme for completeness */
-    --background: 220 25% 10%; 
-    --foreground: 220 20% 90%;
+    /* Using the same values as :root for a consistent dark theme */
+    --background: 220 15% 12%;
+    --foreground: 220 10% 88%;
 
-    --card: 220 25% 12%;
-    --card-foreground: 220 20% 90%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
 
-    --popover: 220 25% 12%;
-    --popover-foreground: 220 20% 90%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
 
-    --primary: 210 70% 55%; /* Slightly lighter blue for dark mode */
-    --primary-foreground: 210 40% 98%;
+    --primary: 130 60% 48%;
+    --primary-foreground: 220 0% 100%;
 
-    --secondary: 210 40% 25%; 
-    --secondary-foreground: 210 40% 80%;
+    --secondary: 220 15% 25%; 
+    --secondary-foreground: 220 10% 75%;
 
-    --muted: 220 20% 20%;
-    --muted-foreground: 220 15% 65%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 30 100% 60%; /* Slightly lighter orange for dark mode */
-    --accent-foreground: 30 100% 10%;
+    --accent: 130 65% 55%;
+    --accent-foreground: 220 0% 100%;
 
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 22%;
-    --ring: 210 70% 60%;
+    --border: 220 15% 30%;
+    --input: 220 15% 18%;
+    --ring: 130 60% 55%;
     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 130 60% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 15% 25%;
+    --sidebar-ring: 130 60% 55%;
   }
 }
 
@@ -96,6 +97,19 @@
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline text-foreground; /* Ensure headings use foreground color */
+  }
+  /* Ensure links in prose are styled accessibly */
+  .prose a {
+    @apply text-primary hover:text-accent;
+  }
+  .prose strong {
+    @apply text-foreground;
+  }
+  .prose code {
+    @apply text-secondary-foreground;
+  }
+  .prose blockquote {
+    @apply border-primary text-muted-foreground;
   }
 }

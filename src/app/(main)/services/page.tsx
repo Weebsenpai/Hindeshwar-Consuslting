@@ -1,62 +1,73 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Briefcase, BarChart3, Lightbulb, CheckCircle, ArrowRight } from "lucide-react";
+import { Briefcase, BarChart3, Lightbulb, CheckCircle, ArrowRight, Brain, Settings, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
-    id: "strategic-planning",
-    icon: <Briefcase className="h-12 w-12 text-primary" />,
-    title: "Strategic Planning",
-    shortDescription: "Develop robust strategies to navigate market complexities and achieve long-term objectives.",
-    longDescription: "Our strategic planning services help you define your vision, set clear goals, and create actionable roadmaps. We analyze market trends, competitive landscapes, and internal capabilities to formulate strategies that drive sustainable growth and competitive advantage.",
-    features: ["Market Analysis & Research", "Competitive Benchmarking", "Vision & Mission Development", "Roadmap Creation", "Performance Metrics"],
+    id: "strategic-planning", // Corresponds to Data & Analytics -> Strategy & Analysis
+    icon: <Brain className="h-12 w-12 text-primary" />,
+    title: "Data & Strategic Analysis",
+    shortDescription: "Leverage data for strategic insights and robust planning.",
+    longDescription: "Our strategic planning and data analysis services help you define your vision, set clear goals, and create actionable roadmaps. We analyze market trends, competitive landscapes, and internal capabilities to formulate strategies that drive sustainable growth and competitive advantage.",
+    features: ["Market Analysis & Research", "Competitive Benchmarking", "Data-driven Insights", "Roadmap Creation", "Performance Metrics"],
     image: "https://placehold.co/600x400.png",
-    imageAlt: "Business professionals in a strategic planning session",
-    aiHint: "strategy meeting"
+    imageAlt: "Business professionals analyzing charts for strategic planning",
+    aiHint: "data analysis"
   },
   {
-    id: "operational-excellence",
-    icon: <BarChart3 className="h-12 w-12 text-primary" />,
+    id: "operational-excellence", // Main category
+    icon: <Settings className="h-12 w-12 text-primary" />,
     title: "Operational Excellence",
     shortDescription: "Optimize your operations for efficiency, productivity, and cost-effectiveness.",
     longDescription: "We help streamline your processes, enhance productivity, and reduce operational costs. Our experts identify bottlenecks, implement lean methodologies, and leverage technology to transform your operations into a high-performing engine for growth.",
-    features: ["Process Optimization", "Lean Six Sigma Implementation", "Supply Chain Management", "Cost Reduction Strategies", "Technology Integration"],
+    features: ["Process Optimization", "Lean Six Sigma", "Supply Chain Management", "Cost Reduction", "Technology Integration"],
     image: "https://placehold.co/600x400.png",
-    imageAlt: "Diagram showing operational workflow optimization",
-    aiHint: "workflow optimization"
+    imageAlt: "Gears turning to show operational efficiency",
+    aiHint: "process optimization"
   },
   {
-    id: "innovation-growth",
+    id: "innovation-growth", // Corresponds to Digital Transformation -> Innovation
     icon: <Lightbulb className="h-12 w-12 text-primary" />,
-    title: "Innovation & Growth",
-    shortDescription: "Foster innovation and identify new growth avenues to stay ahead of the curve.",
-    longDescription: "In a rapidly evolving business environment, innovation is key. We assist you in cultivating a culture of innovation, exploring new market opportunities, and developing products or services that meet emerging customer needs, ensuring you remain a leader in your industry.",
-    features: ["Innovation Workshops", "New Market Entry Strategy", "Product Development Support", "Digital Transformation", "Change Management"],
+    title: "Digital Transformation & Innovation",
+    shortDescription: "Foster innovation and identify new growth avenues through digital solutions.",
+    longDescription: "In a rapidly evolving business environment, digital transformation and innovation are key. We assist you in cultivating a culture of innovation, exploring new market opportunities, and developing products or services that meet emerging customer needs, ensuring you remain a leader in your industry.",
+    features: ["Digital Strategy", "Innovation Workshops", "New Market Entry", "Product Development", "Change Management"],
     image: "https://placehold.co/600x400.png",
-    imageAlt: "Lightbulb symbolizing new ideas and innovation",
-    aiHint: "innovation ideas"
+    imageAlt: "Abstract digital connections and a lightbulb for innovation",
+    aiHint: "digital innovation"
+  },
+   {
+    id: "revenue-growth", // Main category
+    icon: <TrendingUp className="h-12 w-12 text-primary" />,
+    title: "Revenue Growth Strategies",
+    shortDescription: "Unlock new revenue streams and maximize market potential.",
+    longDescription: "Our revenue growth services focus on identifying and capturing market opportunities. We help refine your sales strategies, optimize product portfolios, and develop effective go-to-market plans to accelerate growth and profitability.",
+    features: ["Sales Channel Optimization", "Product Portfolio Management", "B2B Go-To-Market Strategy", "Market Expansion", "Pricing Strategies"],
+    image: "https://placehold.co/600x400.png",
+    imageAlt: "Upward trending graph symbolizing revenue growth",
+    aiHint: "revenue increase"
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="bg-background">
-      <section className="py-16 md:py-24 bg-primary/5">
+    <div className="bg-background text-foreground">
+      <section className="py-16 md:py-24 bg-secondary">
         <div className="container text-center">
-          <h1 className="font-headline text-4xl font-extrabold tracking-tight text-primary sm:text-5xl">Our Services</h1>
+          <h1 className="font-headline text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">Our Services</h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground sm:text-xl">
-            Comprehensive solutions to empower your business and drive lasting success.
+            Comprehensive solutions to empower your business and drive lasting success with Hindeshwar Consulting.
           </p>
         </div>
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container space-y-16">
+        <div className="container space-y-20">
           {services.map((service, index) => (
-            <div key={service.id} id={service.id} className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-16 ${index % 2 !== 0 ? "lg:grid-flow-row-dense" : ""}`}>
-              <div className={`aspect-video overflow-hidden rounded-lg shadow-xl ${index % 2 !== 0 ? "lg:col-start-2" : ""}`}>
+            <div key={service.id} id={service.id} className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-16`}>
+              <div className={`aspect-video overflow-hidden rounded-lg shadow-2xl ${index % 2 !== 0 ? "lg:order-last" : ""}`}>
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
@@ -66,23 +77,23 @@ export default function ServicesPage() {
                   data-ai-hint={service.aiHint}
                 />
               </div>
-              <div>
-                <div className="inline-block p-3 mb-4 rounded-lg bg-accent/20 text-accent">
+              <div className={`${index % 2 !== 0 ? "lg:order-first" : ""}`}>
+                <div className="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary/10 text-primary">
                   {service.icon}
                 </div>
-                <h2 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl">{service.title}</h2>
-                <p className="mt-4 text-lg text-muted-foreground">{service.longDescription}</p>
-                <ul className="mt-6 space-y-2">
+                <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{service.title}</h2>
+                <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{service.longDescription}</p>
+                <ul className="mt-6 space-y-3">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-center">
-                      <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
+                      <CheckCircle className="mr-3 h-6 w-6 text-green-500 flex-shrink-0" />
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-8">
-                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                    <Link href="/contact">Request a Quote <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 rounded-lg">
+                    <Link href={`/services/${service.id.includes("-") ? service.id.split('-')[0] + '/' + service.id.split('-').slice(1).join('-') : service.id}`}>Explore {service.title} <ArrowRight className="ml-2 h-5 w-5" /></Link>
                   </Button>
                 </div>
               </div>
@@ -91,14 +102,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-muted/40">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-4xl">Ready to Transform Your Business?</h2>
-            <p className="mt-4 max-w-xl mx-auto text-lg text-muted-foreground">
-                Contact us today to learn how our tailored services can help you achieve your strategic goals.
+            <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Ready to Transform Your Business?</h2>
+            <p className="mt-4 max-w-xl mx-auto text-lg">
+                Contact Hindeshwar Consulting today to learn how our tailored services can help you achieve your strategic goals.
             </p>
             <div className="mt-8">
-                <Button asChild size="lg" className="text-lg px-8 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button asChild size="lg" className="text-lg px-8 py-6 bg-background text-primary hover:bg-muted/80 rounded-lg">
                     <Link href="/contact">Get Started</Link>
                 </Button>
             </div>
