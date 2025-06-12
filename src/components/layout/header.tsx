@@ -11,29 +11,18 @@ const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services", // Main link for mobile or if mega menu isn't used
+    href: "/services", 
     megaMenuColumns: [
-      {
+      { // Column 1
         groups: [
           {
             title: "Data & Analytics",
             links: [
               { href: "/services/data-analytics/strategy-analysis", label: "Strategy & Analysis" },
-              { href: "/services/data-analytics/architecture-centralization", label: "Architecture Centralization & Modelling" },
+              { href: "/services/data-analytics/architecture-centralization", label: "Architecture & Modelling" },
               { href: "/services/data-analytics/data-visualization", label: "Data Visualisation" },
             ],
           },
-           { // Example of a second group in the first column
-            title: "ESG",
-            links: [
-              { href: "/services/esg/sustainability-strategy", label: "Sustainability Strategy" },
-              { href: "/services/esg/climate-action", label: "Climate Action & Decarbonisation" },
-            ],
-          },
-        ],
-      },
-      {
-        groups: [
           {
             title: "Operational Excellence",
             links: [
@@ -42,16 +31,9 @@ const navItems: NavItem[] = [
               { href: "/services/operational-excellence/supply-chain", label: "Supply Chain Management" },
             ],
           },
-           {
-            title: "Strategy", // Example from user's original broader list
-            links: [
-                { href: "/services/strategy/business-strategy", label: "Business Strategy" },
-                { href: "/services/strategy/digital-strategy", label: "Digital Strategy" },
-            ],
-          },
         ],
       },
-      {
+      { // Column 2
         groups: [
           {
             title: "Digital Transformation",
@@ -61,30 +43,12 @@ const navItems: NavItem[] = [
               { href: "/services/digital-transformation/delivery", label: "Digital Transformation Delivery" },
             ],
           },
-           {
-            title: "Organisational Effectiveness", // Example
-            links: [
-                { href: "/services/organisational-effectiveness/organisation-design", label: "Organisation Design" },
-                { href: "/services/organisational-effectiveness/operating-model", label: "Operating Model (Org Effect.)" },
-            ],
-          },
-        ],
-      },
-      {
-        groups: [
           {
             title: "Revenue Growth",
             links: [
               { href: "/services/revenue-growth/sales-channel-management", label: "Sales & Channel Management" },
               { href: "/services/revenue-growth/product-portfolio", label: "Product & Portfolio Management" },
               { href: "/services/revenue-growth/b2b-go-to-market", label: "B2B Go-To-Market" },
-            ],
-          },
-            {
-            title: "Business Transformation", // Example
-            links: [
-              { href: "/services/business-transformation/transformation-strategy", label: "Transformation Strategy" },
-              { href: "/services/business-transformation/transformation-planning", label: "Transformation Planning" },
             ],
           },
         ],
@@ -106,14 +70,13 @@ export function Header() {
         </Link>
         
         <div className="flex items-center gap-4">
-          <nav className="hidden items-center gap-2 md:flex"> {/* Increased gap for better spacing */}
+          <nav className="hidden items-center gap-2 md:flex">
             <NavLinks items={navItems} />
           </nav>
           <div className="hidden md:flex items-center gap-2">
             <Button variant="ghost" size="icon" aria-label="Search" className="text-foreground hover:text-primary">
               <Search className="h-5 w-5" />
             </Button>
-            {/* "Talk To A Consultant" button removed from here */}
           </div>
           <Sheet>
             <SheetTrigger asChild>
@@ -135,7 +98,6 @@ export function Header() {
                    <Button variant="ghost" size="lg" aria-label="Search" className="text-foreground hover:text-primary justify-start">
                     <Search className="mr-2 h-5 w-5" /> Search
                   </Button>
-                  {/* "Talk To A Consultant" button removed from mobile sheet as well, will be a global FAB */}
                 </div>
               </div>
             </SheetContent>
