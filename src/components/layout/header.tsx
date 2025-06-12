@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, MountainIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { NavLinks, type NavItem, type NavLink, type MegaMenuColumn, type LinkGroup } from "./nav-links";
+import { NavLinks, type NavItem } from "./nav-links";
 
 const navItems: NavItem[] = [
   { href: "/", label: "Home" },
@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
     label: "Services",
     href: "/services", // Fallback for mobile and base for active state
     megaMenuColumns: [
-      { // Column 1
+      { // Column 1: Data & Analytics
         groups: [
           {
             title: "Data & Analytics",
@@ -23,35 +23,9 @@ const navItems: NavItem[] = [
               { href: "/services/data-analytics/data-visualization", label: "Data Visualisation" },
             ],
           },
-          {
-            title: "Business Transformation",
-            links: [
-              { href: "/services/business-transformation/transformation-strategy", label: "Transformation Strategy" },
-              { href: "/services/business-transformation/transformation-planning", label: "Transformation Planning" },
-            ],
-          },
         ],
       },
-      { // Column 2
-        groups: [
-          {
-            title: "Digital Transformation",
-            links: [
-              { href: "/services/digital-transformation/strategy-analysis", label: "Strategy & Analysis" },
-              { href: "/services/digital-transformation/innovation", label: "Innovation" },
-              { href: "/services/digital-transformation/delivery", label: "Digital Transformation Delivery" },
-            ],
-          },
-          {
-            title: "ESG",
-            links: [
-              { href: "/services/esg/sustainability-strategy", label: "Sustainability Strategy" },
-              { href: "/services/esg/climate-action", label: "Climate Action & Decarbonisation" },
-            ],
-          },
-        ],
-      },
-      { // Column 3
+      { // Column 2: Operational Excellence
         groups: [
           {
             title: "Operational Excellence",
@@ -61,16 +35,21 @@ const navItems: NavItem[] = [
               { href: "/services/operational-excellence/supply-chain", label: "Supply Chain Management" },
             ],
           },
+        ],
+      },
+      { // Column 3: Digital Transformation
+        groups: [
           {
-            title: "Strategy",
+            title: "Digital Transformation",
             links: [
-              { href: "/services/strategy/business-strategy", label: "Business Strategy" },
-              { href: "/services/strategy/digital-strategy", label: "Digital Strategy" },
+              { href: "/services/digital-transformation/strategy-analysis", label: "Strategy & Analysis (Digital)" },
+              { href: "/services/digital-transformation/innovation", label: "Innovation" },
+              { href: "/services/digital-transformation/delivery", label: "Digital Transformation Delivery" },
             ],
           },
         ],
       },
-      { // Column 4
+      { // Column 4: Revenue Growth
         groups: [
           {
             title: "Revenue Growth",
@@ -78,13 +57,6 @@ const navItems: NavItem[] = [
               { href: "/services/revenue-growth/sales-channel-management", label: "Sales & Channel Management" },
               { href: "/services/revenue-growth/product-portfolio", label: "Product & Portfolio Management" },
               { href: "/services/revenue-growth/b2b-go-to-market", label: "B2B Go-To-Market" },
-            ],
-          },
-          {
-            title: "Organisational Effectiveness",
-            links: [
-              { href: "/services/organisational-effectiveness/operating-model", label: "Operating Model" },
-              { href: "/services/organisational-effectiveness/organisation-design", label: "Organisation Design" },
             ],
           },
         ],
