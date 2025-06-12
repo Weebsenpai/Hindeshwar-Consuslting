@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 240 100% 99%; /* Off-white #F8F8FF */
-    --foreground: 240 10% 3.9%; /* Dark Gray */
+    --background: 220 20% 98%; /* Very light, slightly cool gray */
+    --foreground: 220 25% 15%; /* Dark grayish blue */
 
-    --card: 240 100% 100%; /* White */
-    --card-foreground: 240 10% 3.9%;
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 220 25% 15%; /* Dark grayish blue */
 
-    --popover: 240 100% 100%; /* White */
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 220 25% 15%; /* Dark grayish blue */
 
-    --primary: 120 61% 34%; /* Forest green #228B22 */
-    --primary-foreground: 120 75% 95%; /* Light Mint/Off-white */
+    --primary: 210 70% 50%; /* Vibrant, professional blue */
+    --primary-foreground: 210 40% 98%; /* Very light blue/off-white */
 
-    --secondary: 120 20% 92%; /* Light Greenish Gray */
-    --secondary-foreground: 120 61% 30%; /* Darker Forest Green */
+    --secondary: 210 40% 92%; /* Light grayish blue */
+    --secondary-foreground: 210 70% 40%; /* Darker, less saturated blue */
 
-    --muted: 240 20% 96.1%; /* Light Gray */
-    --muted-foreground: 240 10% 45.1%; /* Medium Gray */
+    --muted: 220 20% 94%; /* Light gray */
+    --muted-foreground: 220 15% 45%; /* Medium gray */
 
-    --accent: 51 100% 50%; /* Golden yellow #FFD700 */
-    --accent-foreground: 51 100% 15%; /* Dark Brown/Black for text on yellow */
+    --accent: 30 100% 55%; /* Warm, inviting orange */
+    --accent-foreground: 30 100% 10%; /* Dark brown/black for text on orange */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 70% 50%; /* A clear, but not overly harsh red */
+    --destructive-foreground: 0 0% 98%; /* White/Off-white for text on destructive */
 
-    --border: 240 10% 90%; /* Light Gray Border */
-    --input: 240 10% 94%; /* Slightly Off-white Input BG */
-    --ring: 120 61% 40%; /* Forest Green shade for focus rings */
+    --border: 220 15% 88%; /* Light cool gray border */
+    --input: 220 15% 96%; /* Slightly lighter input background */
+    --ring: 210 70% 55%; /* Primary blue for focus rings */
 
     --radius: 0.5rem;
 
@@ -46,34 +46,34 @@
   }
 
   .dark {
-    /* Dark theme is not the primary focus but defined to avoid issues if toggled */
-    --background: 240 10% 3.9%;
-    --foreground: 240 100% 99%;
+    /* Define a basic dark theme based on the new light theme for completeness */
+    --background: 220 25% 10%; 
+    --foreground: 220 20% 90%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 240 100% 99%;
+    --card: 220 25% 12%;
+    --card-foreground: 220 20% 90%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 240 100% 99%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 20% 90%;
 
-    --primary: 120 61% 45%; /* Slightly lighter green for dark mode */
-    --primary-foreground: 120 75% 95%;
+    --primary: 210 70% 55%; /* Slightly lighter blue for dark mode */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 120 20% 15%; 
-    --secondary-foreground: 120 61% 80%;
+    --secondary: 210 40% 25%; 
+    --secondary-foreground: 210 40% 80%;
 
-    --muted: 240 10% 14.9%;
-    --muted-foreground: 240 10% 63.9%;
+    --muted: 220 20% 20%;
+    --muted-foreground: 220 15% 65%;
 
-    --accent: 51 100% 60%; /* Slightly lighter yellow for dark mode */
-    --accent-foreground: 51 100% 10%;
+    --accent: 30 100% 60%; /* Slightly lighter orange for dark mode */
+    --accent-foreground: 30 100% 10%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 10% 14.9%;
-    --input: 240 10% 14.9%;
-    --ring: 120 61% 50%;
+    --border: 220 15% 25%;
+    --input: 220 15% 22%;
+    --ring: 210 70% 60%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
