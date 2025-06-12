@@ -106,15 +106,15 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                   <div>
                     <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Core Pillars</h4>
-                    <div className="space-y-1"> {/* Adjusted spacing */}
+                    <div className="space-y-1"> 
                       {firstColumnItems.map((service) => (
-                        <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent hover:bg-accent/10 transition-all duration-200 ease-in-out">
+                        <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
                           <Link
                             href={service.href}
                             className="flex items-start gap-3"
                             prefetch={false}
                           >
-                            <div className="text-primary mt-1 flex-shrink-0">
+                            <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
                               <service.icon className="h-5 w-5" />
                             </div>
                             <div className="flex-grow">
@@ -124,7 +124,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-1.5 space-y-1 pl-8 list-none"> {/* Adjusted margin */}
+                            <ul className="mt-1.5 space-y-1 pl-8 list-none">
                               {service.subServices.map((subService) => (
                                 <li key={subService.href}>
                                   <Link
@@ -144,15 +144,15 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                   </div>
                   <div>
                     <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Strategic Focus</h4>
-                     <div className="space-y-1"> {/* Adjusted spacing */}
+                     <div className="space-y-1"> 
                       {secondColumnItems.map((service) => (
-                         <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent hover:bg-accent/10 transition-all duration-200 ease-in-out">
+                         <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
                           <Link
                             href={service.href}
                             className="flex items-start gap-3"
                             prefetch={false}
                           >
-                            <div className="text-primary mt-1 flex-shrink-0">
+                            <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
                               <service.icon className="h-5 w-5" />
                             </div>
                             <div className="flex-grow">
@@ -162,7 +162,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-1.5 space-y-1 pl-8 list-none"> {/* Adjusted margin */}
+                            <ul className="mt-1.5 space-y-1 pl-8 list-none">
                               {service.subServices.map((subService) => (
                                 <li key={subService.href}>
                                   <Link
@@ -304,3 +304,4 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
     </>
   );
 }
+
