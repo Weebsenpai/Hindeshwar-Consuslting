@@ -16,7 +16,7 @@ export default function HomePage() {
             alt="Global business strategy"
             fill
             className="opacity-20 object-cover"
-            data-ai-hint="dynamic abstract cityscape" 
+            data-ai-hint="business cityscape success" 
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
@@ -120,7 +120,7 @@ export default function HomePage() {
                 width={600}
                 height={400}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                data-ai-hint="professionals collaborating office"
+                data-ai-hint="team collaboration office"
               />
             </div>
           </div>

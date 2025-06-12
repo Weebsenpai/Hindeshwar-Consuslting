@@ -49,7 +49,7 @@ export default function ServiceB2BGoToMarketPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="professionals shaking hands"
+                data-ai-hint="b2b market strategy"
             />
         </div>
       </div>

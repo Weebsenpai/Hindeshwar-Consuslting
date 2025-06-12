@@ -48,7 +48,7 @@ export default function ServiceDigitalStrategyAnalysisPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="digital interface network"
+                data-ai-hint="digital strategy interface"
             />
         </div>
       </div>

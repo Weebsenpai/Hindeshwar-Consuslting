@@ -49,7 +49,7 @@ export default function ServiceSustainabilityStrategyPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="sustainable future green"
+                data-ai-hint="sustainability green future"
             />
         </div>
       </div>

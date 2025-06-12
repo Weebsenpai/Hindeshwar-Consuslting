@@ -9,21 +9,21 @@ const teamMembers = [
     role: "Founder & CEO",
     image: "https://placehold.co/300x300.png",
     bio: "Visionary leader with 20+ years of experience in strategic consulting and business transformation.",
-    aiHint: "ceo portrait professional"
+    aiHint: "female ceo professional"
   },
   {
     name: "Marcus Chen",
     role: "Lead Strategist",
     image: "https://placehold.co/300x300.png",
     bio: "Expert in market analysis and operational excellence, driving impactful results for clients.",
-    aiHint: "strategist business portrait"
+    aiHint: "male strategist business"
   },
   {
     name: "Aisha Khan",
     role: "Senior Consultant, Innovation",
     image: "https://placehold.co/300x300.png",
     bio: "Specializes in fostering innovation and guiding companies through digital transformation.",
-    aiHint: "consultant female portrait"
+    aiHint: "female consultant innovation"
   },
 ];
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 width={600}
                 height={400}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                data-ai-hint="bright modern office"
+                data-ai-hint="modern office meeting"
               />
             </div>
           </div>

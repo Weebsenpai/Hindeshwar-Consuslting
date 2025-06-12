@@ -49,7 +49,7 @@ export default function ServiceOperatingModelPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="business structure chart"
+                data-ai-hint="operating model structure"
             />
         </div>
       </div>

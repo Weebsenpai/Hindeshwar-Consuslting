@@ -49,7 +49,7 @@ export default function ServiceProcessReengineeringPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="optimized workflow diagram"
+                data-ai-hint="workflow optimization process"
             />
         </div>
       </div>

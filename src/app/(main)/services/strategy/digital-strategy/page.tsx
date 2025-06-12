@@ -49,7 +49,7 @@ export default function ServiceDigitalStrategyPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="futuristic digital interface"
+                data-ai-hint="digital strategy tech"
             />
         </div>
       </div>

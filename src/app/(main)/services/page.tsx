@@ -15,7 +15,7 @@ const services = [
     features: ["Market Analysis & Research", "Competitive Benchmarking", "Data-driven Insights", "Roadmap Creation", "Performance Metrics"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Business professionals analyzing charts for strategic planning",
-    aiHint: "data insights charts" 
+    aiHint: "data analytics charts" 
   },
   {
     id: "operational-excellence", 
@@ -26,7 +26,7 @@ const services = [
     features: ["Process Optimization", "Lean Six Sigma", "Supply Chain Management", "Cost Reduction", "Technology Integration"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Gears turning to show operational efficiency",
-    aiHint: "efficient gears mechanism" 
+    aiHint: "gears efficiency process" 
   },
   {
     id: "innovation-growth", 
@@ -37,7 +37,7 @@ const services = [
     features: ["Digital Strategy", "Innovation Workshops", "New Market Entry", "Product Development", "Change Management"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Abstract digital connections and a lightbulb for innovation",
-    aiHint: "digital network lightbulb" 
+    aiHint: "digital innovation network" 
   },
    {
     id: "revenue-growth", 
@@ -48,7 +48,7 @@ const services = [
     features: ["Sales Channel Optimization", "Product Portfolio Management", "B2B Go-To-Market Strategy", "Market Expansion", "Pricing Strategies"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Upward trending graph symbolizing revenue growth",
-    aiHint: "upward graph success" 
+    aiHint: "growth graph revenue" 
   },
 ];
 

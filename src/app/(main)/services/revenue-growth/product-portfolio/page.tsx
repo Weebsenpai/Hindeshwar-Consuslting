@@ -49,7 +49,7 @@ export default function ServiceProductPortfolioPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="diverse product range"
+                data-ai-hint="product portfolio management"
             />
         </div>
       </div>

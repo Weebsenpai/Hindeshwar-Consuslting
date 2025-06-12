@@ -49,7 +49,7 @@ export default function ServiceOrgEffectivenessOperatingModelPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="interlocking gears system"
+                data-ai-hint="organizational gears system"
             />
         </div>
       </div>

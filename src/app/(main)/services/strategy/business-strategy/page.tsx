@@ -49,7 +49,7 @@ export default function ServiceBusinessStrategyPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="chess strategy game"
+                data-ai-hint="business strategy chess"
             />
         </div>
       </div>

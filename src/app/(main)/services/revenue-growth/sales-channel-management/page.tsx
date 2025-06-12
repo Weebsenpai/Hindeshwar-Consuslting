@@ -49,7 +49,7 @@ export default function ServiceSalesChannelManagementPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="sales team meeting"
+                data-ai-hint="sales channel team"
             />
         </div>
       </div>

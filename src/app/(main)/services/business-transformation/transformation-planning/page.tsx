@@ -49,7 +49,7 @@ export default function ServiceTransformationPlanningPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="strategic roadmap blueprint"
+                data-ai-hint="roadmap planning strategy"
             />
         </div>
       </div>

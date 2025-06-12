@@ -48,7 +48,7 @@ export default function ServiceArchitectureCentralizationPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="data hub network"
+                data-ai-hint="data architecture network"
             />
         </div>
       </div>

@@ -48,7 +48,7 @@ export default function ServiceStrategyAnalysisPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="analytical planning charts"
+                data-ai-hint="analytics strategy charts"
             />
         </div>
       </div>

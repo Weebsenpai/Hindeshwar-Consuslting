@@ -49,7 +49,7 @@ export default function ServiceDigitalDeliveryPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="project team success"
+                data-ai-hint="digital project team"
             />
         </div>
       </div>

@@ -49,7 +49,7 @@ export default function ServiceClimateActionPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="wind turbines solar"
+                data-ai-hint="climate action renewable"
             />
         </div>
       </div>

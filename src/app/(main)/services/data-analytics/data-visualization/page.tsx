@@ -48,7 +48,7 @@ export default function ServiceDataVisualizationPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="interactive charts dashboard"
+                data-ai-hint="charts dashboard visualization"
             />
         </div>
       </div>
