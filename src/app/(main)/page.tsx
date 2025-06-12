@@ -4,19 +4,58 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, Brain, BarChart3, Lightbulb } from "lucide-react";
+import { generateImage, type GenerateImageInput } from "@/ai/flows/generate-image-flow";
 
-export default function HomePage() {
+export default async function HomePage() {
+  let heroImageDataUri = "https://placehold.co/1920x1080.png"; 
+  const heroImagePrompt = "dynamic abstract cityscape";
+
+  try {
+    const imageInput: GenerateImageInput = { prompt: heroImagePrompt };
+    const imageResult = await generateImage(imageInput);
+    if (imageResult.imageDataUri) {
+      heroImageDataUri = imageResult.imageDataUri;
+    }
+  } catch (error) {
+    console.error("Failed to generate hero image for homepage:", error);
+    // heroImageDataUri will remain the default placeholder
+  }
+
+  const serviceCards = [
+    {
+      icon: <Brain className="h-10 w-10 text-primary" />,
+      title: "Strategic Advisory",
+      description: "Develop robust strategies to navigate market complexities and achieve long-term objectives.",
+      href: "/services/strategy/business-strategy",
+      aiHint: "strategic planning charts"
+    },
+    {
+      icon: <BarChart3 className="h-10 w-10 text-primary" />,
+      title: "Operational Excellence",
+      description: "Optimize your operations for efficiency, productivity, and cost-effectiveness.",
+      href: "/services/operational-excellence/operating-model",
+      aiHint: "gears efficiency process"
+    },
+    {
+      icon: <Lightbulb className="h-10 w-10 text-primary" />,
+      title: "Digital Transformation",
+      description: "Foster innovation and identify new growth avenues to stay ahead of the curve.",
+      href: "/services/digital-transformation/innovation",
+      aiHint: "digital innovation network"
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative py-32 md:py-48 bg-background text-foreground">
         <div className="absolute inset-0">
           <Image
-            src="https://placehold.co/1920x1080.png"
-            alt="Global business strategy"
+            src={heroImageDataUri}
+            alt="Global business strategy for Hindeshwar Consulting"
             fill
             className="opacity-20 object-cover"
-            data-ai-hint="business cityscape success" 
+            data-ai-hint={heroImagePrompt} 
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
@@ -37,7 +76,9 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-lg px-8 py-7 rounded-lg border-primary text-primary hover:bg-primary/10 hover:text-primary w-full sm:w-auto">
-              <Link href="/contact">Read Insights</Link>
+              <Link href="/contact">
+                <span className="inline-flex items-center">Read Insights</span>
+              </Link>
             </Button>
           </div>
         </div>
@@ -53,26 +94,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: <Brain className="h-10 w-10 text-primary" />,
-                title: "Strategic Advisory",
-                description: "Develop robust strategies to navigate market complexities and achieve long-term objectives.",
-                href: "/services/strategy/business-strategy"
-              },
-              {
-                icon: <BarChart3 className="h-10 w-10 text-primary" />,
-                title: "Operational Excellence",
-                description: "Optimize your operations for efficiency, productivity, and cost-effectiveness.",
-                href: "/services/operational-excellence/operating-model" 
-              },
-              {
-                icon: <Lightbulb className="h-10 w-10 text-primary" />,
-                title: "Digital Transformation",
-                description: "Foster innovation and identify new growth avenues to stay ahead of the curve.",
-                href: "/services/digital-transformation/innovation"
-              },
-            ].map((service) => (
+            {serviceCards.map((service) => (
               <Card key={service.title} className="flex flex-col bg-background text-foreground overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-lg border-border">
                 <CardHeader className="items-center text-center p-8">
                   <div className="p-4 bg-primary/10 rounded-full mb-4 inline-block">
@@ -109,7 +131,9 @@ export default function HomePage() {
               </p>
               <div className="mt-8">
                 <Button asChild size="lg" className="text-lg rounded-lg bg-primary text-primary-foreground hover:bg-primary/80">
-                  <Link href="/about">Discover More About Us</Link>
+                  <Link href="/about">
+                    <span className="inline-flex items-center">Discover More About Us</span>
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -120,7 +144,7 @@ export default function HomePage() {
                 width={600}
                 height={400}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                data-ai-hint="team collaboration office"
+                data-ai-hint="professionals collaborating office"
               />
             </div>
           </div>
@@ -136,7 +160,9 @@ export default function HomePage() {
           </p>
           <div className="mt-10">
             <Button asChild size="lg" variant="secondary" className="bg-background text-primary hover:bg-muted/80 text-lg px-8 py-6 rounded-lg">
-              <Link href="/contact">Schedule a Consultation</Link>
+              <Link href="/contact">
+                <span className="inline-flex items-center">Schedule a Consultation</span>
+              </Link>
             </Button>
           </div>
         </div>
