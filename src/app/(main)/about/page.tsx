@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Users, Target, Eye, Award } from "lucide-react";
+import { Users, Target, Eye, Award, Lightbulb } from "lucide-react";
 import Link from "next/link";
 
 const teamMembers = [
