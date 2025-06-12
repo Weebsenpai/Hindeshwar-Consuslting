@@ -17,7 +17,19 @@ export default async function HomePage() {
       heroImageDataUri = imageResult.imageDataUri;
     }
   } catch (error) {
-    console.error("Failed to generate hero image for homepage:", error);
+    console.error("Failed to generate hero image for homepage. Raw error object:", error);
+    if (error instanceof Error) {
+        console.error("Error name:", error.name);
+        console.error("Error message:", error.message);
+        console.error("Error stack:", error.stack);
+    } else {
+        // Attempt to stringify if it's not a standard Error object
+        try {
+            console.error("Error details (stringified):", JSON.stringify(error, null, 2));
+        } catch (stringifyError) {
+            console.error("Error details (raw, stringify failed):", error);
+        }
+    }
     // heroImageDataUri will remain the default placeholder
   }
 
@@ -77,7 +89,7 @@ export default async function HomePage() {
             </Button>
             <Button asChild variant="outline" size="lg" className="text-lg px-8 py-7 rounded-lg border-primary text-primary hover:bg-primary/10 hover:text-primary w-full sm:w-auto">
               <Link href="/contact">
-                <span className="inline-flex items-center">Read Insights</span>
+                 <span className="inline-flex items-center">Read Insights</span>
               </Link>
             </Button>
           </div>
@@ -132,7 +144,7 @@ export default async function HomePage() {
               <div className="mt-8">
                 <Button asChild size="lg" className="text-lg rounded-lg bg-primary text-primary-foreground hover:bg-primary/80">
                   <Link href="/about">
-                    <span className="inline-flex items-center">Discover More About Us</span>
+                     <span className="inline-flex items-center">Discover More About Us</span>
                   </Link>
                 </Button>
               </div>
