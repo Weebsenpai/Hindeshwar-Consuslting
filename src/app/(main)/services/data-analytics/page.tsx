@@ -112,7 +112,7 @@ export default function DataAnalyticsPage() {
 
         <div className="space-y-16 md:space-y-24">
           {pageData.subServices.map((service) => (
-            <section id={service.id} key={service.id} className="scroll-mt-20"> {/* scroll-mt-20 to offset for sticky header */}
+            <section id={service.id} key={service.id} className="scroll-mt-28"> {/* scroll-mt-20 to offset for sticky header */}
               <div className="mb-8">
                 <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                   {service.title}
