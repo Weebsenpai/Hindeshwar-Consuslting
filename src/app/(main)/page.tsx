@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -13,10 +14,10 @@ export default function HomePage() {
           <Image
             src="https://placehold.co/1920x1080.png"
             alt="Global business strategy"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-20"
+            fill
+            className="opacity-20 object-cover"
             data-ai-hint="abstract business"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
         </div>
@@ -31,7 +32,7 @@ export default function HomePage() {
             <Button asChild size="lg" className="text-lg px-8 py-7 rounded-lg bg-primary text-primary-foreground hover:bg-primary/80 w-full sm:w-auto">
               <Link href="/services">Explore Our Expertise <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-7 rounded-lg border-primary text-primary hover:bg-primary/10 hover:text-primary-foreground w-full sm:w-auto">
+            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-7 rounded-lg border-primary text-primary hover:bg-primary/10 hover:text-primary w-full sm:w-auto">
               <Link href="/contact">Read Insights</Link>
             </Button>
           </div>

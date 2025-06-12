@@ -1,5 +1,6 @@
+
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, MountainIcon } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Mountain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Footer() {
@@ -11,7 +12,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 items-start">
           <div className="md:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4" prefetch={false}>
-              <MountainIcon className="h-7 w-7 text-primary" />
+              <Mountain className="h-7 w-7 text-primary" />
               <span className="font-headline text-xl font-bold text-foreground">Hindeshwar Consulting</span>
             </Link>
             <p className="text-sm text-muted-foreground">

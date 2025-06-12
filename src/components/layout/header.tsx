@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, MountainIcon, Search, ArrowRight } from "lucide-react";
+import { Menu, Mountain, Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
@@ -11,9 +11,9 @@ const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services", 
+    href: "/services",
     megaMenuColumns: [
-      { 
+      {
         groups: [
           {
             title: "Data & Analytics",
@@ -32,7 +32,7 @@ const navItems: NavItem[] = [
           },
         ],
       },
-      { 
+      {
         groups: [
           {
             title: "Operational Excellence",
@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
           },
         ],
       },
-      { 
+      {
         groups: [
           {
             title: "Digital Transformation",
@@ -70,7 +70,7 @@ const navItems: NavItem[] = [
           },
         ],
       },
-      { 
+      {
         groups: [
           {
             title: "Revenue Growth",
@@ -101,8 +101,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background shadow-md">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          {/* Using MountainIcon as a placeholder for a more complex logo like Renoir's */}
-          <MountainIcon className="h-8 w-8 text-primary" /> 
+          <Mountain className="h-8 w-8 text-primary" />
           <span className="font-headline text-2xl font-bold text-foreground">Hindeshwar Consulting</span>
         </Link>
         
@@ -128,7 +127,7 @@ export function Header() {
             <SheetContent side="right" className="bg-background text-foreground border-border">
               <div className="grid gap-4 p-4">
                 <Link href="/" className="flex items-center gap-2 mb-4" prefetch={false}>
-                  <MountainIcon className="h-6 w-6 text-primary" />
+                  <Mountain className="h-6 w-6 text-primary" />
                   <span className="font-headline text-xl font-bold text-foreground">Hindeshwar Consulting</span>
                 </Link>
                 <nav className="grid gap-2">
