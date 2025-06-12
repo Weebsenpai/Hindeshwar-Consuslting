@@ -4,34 +4,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, Brain, BarChart3, Lightbulb } from "lucide-react";
-import { generateImage, type GenerateImageInput } from "@/ai/flows/generate-image-flow";
 
-export default async function HomePage() {
-  let heroImageDataUri = "https://placehold.co/1920x1080.png"; 
+export default function HomePage() {
+  const heroImageDataUri = "https://placehold.co/1920x1080.png"; 
   const heroImagePrompt = "dynamic abstract cityscape";
-
-  try {
-    const imageInput: GenerateImageInput = { prompt: heroImagePrompt };
-    const imageResult = await generateImage(imageInput);
-    if (imageResult.imageDataUri) {
-      heroImageDataUri = imageResult.imageDataUri;
-    }
-  } catch (error) {
-    console.error("Failed to generate hero image for homepage. Raw error object:", error);
-    if (error instanceof Error) {
-        console.error("Error name:", error.name);
-        console.error("Error message:", error.message);
-        console.error("Error stack:", error.stack);
-    } else {
-        // Attempt to stringify if it's not a standard Error object
-        try {
-            console.error("Error details (stringified):", JSON.stringify(error, null, 2));
-        } catch (stringifyError) {
-            console.error("Error details (raw, stringify failed):", error);
-        }
-    }
-    // heroImageDataUri will remain the default placeholder
-  }
 
   const serviceCards = [
     {
