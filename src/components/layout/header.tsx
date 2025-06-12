@@ -13,24 +13,44 @@ const serviceItemsForMegaMenu = [
     title: "Data & Analytics",
     description: "Unlock insights, drive decisions.",
     href: "/services/data-analytics/strategy-analysis",
+    subServices: [
+      { label: "Strategy & Analysis", href: "/services/data-analytics/strategy-analysis" },
+      { label: "Architecture & Modelling", href: "/services/data-analytics/architecture-centralization" },
+      { label: "Data Visualisation", href: "/services/data-analytics/data-visualization" },
+    ]
   },
   {
     icon: Settings,
     title: "Operational Excellence",
     description: "Optimize processes, boost efficiency.",
     href: "/services/operational-excellence/operating-model",
+    subServices: [
+      { label: "Process Re-engineering", href: "/services/operational-excellence/process-reengineering" },
+      { label: "Operating Model", href: "/services/operational-excellence/operating-model" },
+      { label: "Organisation Design", href: "/services/organisational-effectiveness/organisation-design" }, // Note: links to existing Organisational Effectiveness page
+    ]
   },
   {
     icon: Lightbulb,
     title: "Digital Transformation",
     description: "Innovate, adapt, and lead digitally.",
     href: "/services/digital-transformation/strategy-analysis",
+    subServices: [
+      { label: "Strategy & Analysis", href: "/services/digital-transformation/strategy-analysis" },
+      { label: "Innovation", href: "/services/digital-transformation/innovation" },
+      { label: "Digital Transformation Delivery", href: "/services/digital-transformation/delivery" },
+    ]
   },
   {
     icon: TrendingUp,
     title: "Revenue Growth",
     description: "Expand markets, accelerate sales.",
     href: "/services/revenue-growth/b2b-go-to-market",
+    subServices: [
+      { label: "Sales & Channel Management", href: "/services/revenue-growth/sales-channel-management" },
+      { label: "Product & Portfolio Management", href: "/services/revenue-growth/product-portfolio" },
+      { label: "B2B Go-To-Market", href: "/services/revenue-growth/b2b-go-to-market" },
+    ]
   },
 ];
 
@@ -94,4 +114,3 @@ export function Header() {
     </header>
   );
 }
-

@@ -25,11 +25,17 @@ export interface NavLink {
   disabled?: boolean;
 }
 
+export interface SubServiceItem {
+  label: string;
+  href: string;
+}
+
 export interface ServiceItem {
   icon: LucideIcon;
   title: string;
   description: string;
   href: string;
+  subServices?: SubServiceItem[];
 }
 
 export interface NavItem {
@@ -73,7 +79,6 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
 
         if (!isMobile && item.serviceItems && item.serviceItems.length > 0) {
           // DESKTOP "GOSITE-STYLE" MEGA MENU (HoverCard)
-          // Splitting the 4 service items into two columns for 2x2 grid
           const firstColumnItems = item.serviceItems.slice(0, 2);
           const secondColumnItems = item.serviceItems.slice(2, 4);
 
@@ -114,13 +119,28 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                           <div className="text-primary mt-1 flex-shrink-0">
                             <service.icon className="h-5 w-5" />
                           </div>
-                          <div>
+                          <div className="flex-grow">
                             <p className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-150 text-sm">
                               {service.title}
                             </p>
                             <p className="text-xs text-muted-foreground group-hover:text-card-foreground/90 transition-colors duration-150">
                               {service.description}
                             </p>
+                            {service.subServices && service.subServices.length > 0 && (
+                              <ul className="mt-2 space-y-1 pl-0 list-none">
+                                {service.subServices.map((subService) => (
+                                  <li key={subService.href}>
+                                    <Link
+                                      href={subService.href}
+                                      className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
+                                      prefetch={false}
+                                    >
+                                      {subService.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </div>
                         </Link>
                       ))}
@@ -139,13 +159,28 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                           <div className="text-primary mt-1 flex-shrink-0">
                             <service.icon className="h-5 w-5" />
                           </div>
-                          <div>
+                          <div className="flex-grow">
                             <p className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-150 text-sm">
                               {service.title}
                             </p>
                             <p className="text-xs text-muted-foreground group-hover:text-card-foreground/90 transition-colors duration-150">
                               {service.description}
                             </p>
+                             {service.subServices && service.subServices.length > 0 && (
+                              <ul className="mt-2 space-y-1 pl-0 list-none">
+                                {service.subServices.map((subService) => (
+                                  <li key={subService.href}>
+                                    <Link
+                                      href={subService.href}
+                                      className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
+                                      prefetch={false}
+                                    >
+                                      {subService.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </div>
                         </Link>
                       ))}
@@ -235,7 +270,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                      {item.label}
                     </Link>
                     <div className="ml-0 mt-1 space-y-1 pt-1">
-                    {item.serviceItems.map(serviceLink => (
+                    {item.serviceItems.map(serviceLink => ( // These are the 4 main service categories
                          <SheetClose asChild key={serviceLink.href}>
                              <Link 
                                 href={serviceLink.href} 
@@ -274,4 +309,3 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
     </>
   );
 }
-
