@@ -2,22 +2,93 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, MountainIcon, ChevronDown } from "lucide-react"; // Added ChevronDown
+import { Menu, MountainIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { NavLinks, type NavItem } from "./nav-links";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavLinks, type NavItem, type NavLink, type MegaMenuColumn, type LinkGroup } from "./nav-links";
 
 const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services", // Base href for active state and "All Services" link
-    children: [
-      { href: "/services", label: "All Services" },
-      { href: "/services#strategic-planning", label: "Data & Analysis" },
-      { href: "/services#operational-excellence", label: "Operational Excellence" },
-      { href: "/services#innovation-growth", label: "Digital Transformation" },
-      { href: "/services#revenue-growth", label: "Revenue Growth" }, // Ensure this ID exists or is added to the services page for scrolling
+    href: "/services", // Fallback for mobile and base for active state
+    megaMenuColumns: [
+      { // Column 1
+        groups: [
+          {
+            title: "Data & Analytics",
+            links: [
+              { href: "/services/data-analytics/strategy-analysis", label: "Strategy & Analysis" },
+              { href: "/services/data-analytics/architecture-centralization", label: "Architecture Centralization & Modelling" },
+              { href: "/services/data-analytics/data-visualization", label: "Data Visualisation" },
+            ],
+          },
+          {
+            title: "Business Transformation",
+            links: [
+              { href: "/services/business-transformation/transformation-strategy", label: "Transformation Strategy" },
+              { href: "/services/business-transformation/transformation-planning", label: "Transformation Planning" },
+            ],
+          },
+        ],
+      },
+      { // Column 2
+        groups: [
+          {
+            title: "Digital Transformation",
+            links: [
+              { href: "/services/digital-transformation/strategy-analysis", label: "Strategy & Analysis" },
+              { href: "/services/digital-transformation/innovation", label: "Innovation" },
+              { href: "/services/digital-transformation/delivery", label: "Digital Transformation Delivery" },
+            ],
+          },
+          {
+            title: "ESG",
+            links: [
+              { href: "/services/esg/sustainability-strategy", label: "Sustainability Strategy" },
+              { href: "/services/esg/climate-action", label: "Climate Action & Decarbonisation" },
+            ],
+          },
+        ],
+      },
+      { // Column 3
+        groups: [
+          {
+            title: "Operational Excellence",
+            links: [
+              { href: "/services/operational-excellence/process-reengineering", label: "Business Process Re-engineering" },
+              { href: "/services/operational-excellence/operating-model", label: "Operating Model" },
+              { href: "/services/operational-excellence/supply-chain", label: "Supply Chain Management" },
+            ],
+          },
+          {
+            title: "Strategy",
+            links: [
+              { href: "/services/strategy/business-strategy", label: "Business Strategy" },
+              { href: "/services/strategy/digital-strategy", label: "Digital Strategy" },
+            ],
+          },
+        ],
+      },
+      { // Column 4
+        groups: [
+          {
+            title: "Revenue Growth",
+            links: [
+              { href: "/services/revenue-growth/sales-channel-management", label: "Sales & Channel Management" },
+              { href: "/services/revenue-growth/product-portfolio", label: "Product & Portfolio Management" },
+              { href: "/services/revenue-growth/b2b-go-to-market", label: "B2B Go-To-Market" },
+            ],
+          },
+          {
+            title: "Organisational Effectiveness",
+            links: [
+              { href: "/services/organisational-effectiveness/operating-model", label: "Operating Model" },
+              { href: "/services/organisational-effectiveness/organisation-design", label: "Organisation Design" },
+            ],
+          },
+        ],
+      },
     ],
   },
   { href: "/about", label: "About Us" },
@@ -33,7 +104,7 @@ export function Header() {
           <MountainIcon className="h-6 w-6 text-primary" />
           <span className="font-headline text-xl font-bold text-primary">Apex Consulting</span>
         </Link>
-        <nav className="hidden items-center gap-2 md:flex"> {/* Changed gap-1 to gap-2 */}
+        <nav className="hidden items-center gap-2 md:flex">
           <NavLinks items={navItems} />
         </nav>
         <Sheet>
@@ -59,5 +130,3 @@ export function Header() {
     </header>
   );
 }
-
-    
