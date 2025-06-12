@@ -33,7 +33,7 @@ export function Header() {
           <MountainIcon className="h-6 w-6 text-primary" />
           <span className="font-headline text-xl font-bold text-primary">Apex Consulting</span>
         </Link>
-        <nav className="hidden items-center gap-1 md:flex"> {/* Adjusted gap for dropdown trigger consistency */}
+        <nav className="hidden items-center gap-2 md:flex"> {/* Changed gap-1 to gap-2 */}
           <NavLinks items={navItems} />
         </nav>
         <Sheet>

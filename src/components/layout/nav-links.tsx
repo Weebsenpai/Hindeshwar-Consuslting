@@ -30,14 +30,15 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
 
   const navLinkClasses = (href: string | undefined, disabled?: boolean, isTrigger?: boolean, isActive?: boolean) =>
     cn(
-      "text-sm font-medium transition-colors hover:text-primary",
-      isActive ? "text-primary" : "text-muted-foreground",
-      disabled && "pointer-events-none opacity-50",
-      // Mobile specific base styling for links and dropdown triggers
-      isMobile && "block rounded-md px-3 py-2 text-base hover:bg-accent hover:text-accent-foreground",
-      // Desktop specific trigger styling (button appearance)
-      !isMobile && isTrigger && "px-3 py-2", // Padding for desktop trigger button
-      !isMobile && isTrigger && "cursor-pointer rounded-md" // Make it look like other nav items
+      "text-sm font-medium transition-colors hover:text-primary", // Base styles for all
+      isActive ? "text-primary" : "text-muted-foreground",      // Active state for all
+      disabled && "pointer-events-none opacity-50",               // Disabled state for all
+
+      isMobile
+        ? "block rounded-md px-3 py-2 text-base hover:bg-accent hover:text-accent-foreground" // Mobile: full styling
+        : "px-3 py-2 rounded-md", // Desktop: base padding and rounding for ALL items (links and triggers)
+
+      !isMobile && isTrigger && "cursor-pointer" // Desktop Trigger: specific cursor
     );
 
   const dropdownMenuItemLinkClasses = (href: string | undefined, disabled?: boolean) =>
