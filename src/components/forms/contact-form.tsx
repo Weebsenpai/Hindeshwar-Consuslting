@@ -16,7 +16,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import { submitContactForm, formSchema, type ContactFormValues } from "@/actions/contact-actions";
+import { submitContactForm } from "@/actions/contact-actions";
+import { formSchema, type ContactFormValues } from "@/lib/schemas/contact";
 
 export function ContactForm() {
   const { toast } = useToast();
