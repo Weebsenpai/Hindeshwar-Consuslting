@@ -93,8 +93,8 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                 </div>
               </HoverCardTrigger>
               <HoverCardContent
-                align="center" // Changed from "start" to "center"
-                sideOffset={18} 
+                align="center"
+                sideOffset={10} 
                 className="w-auto max-w-xl p-4 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border" 
               >
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
@@ -110,7 +110,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                               <li key={link.href}>
                                 <Link
                                   href={link.href}
-                                  className="text-sm text-card-foreground hover:text-primary transition-colors duration-150" // Reverted link color
+                                  className="text-sm text-card-foreground hover:text-primary transition-colors duration-150"
                                   prefetch={false}
                                 >
                                   {link.label}
