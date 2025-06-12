@@ -4,10 +4,10 @@
 import Link from "next/link";
 import { Menu, Mountain, Search, BarChart3, Settings, Lightbulb, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
 
-const serviceItemsForMegaMenu = [
+const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
   {
     icon: BarChart3,
     title: "Data & Analytics",
@@ -27,7 +27,7 @@ const serviceItemsForMegaMenu = [
     subServices: [
       { label: "Process Re-engineering", href: "/services/operational-excellence/process-reengineering" },
       { label: "Operating Model", href: "/services/operational-excellence/operating-model" },
-      { label: "Organisation Design", href: "/services/organisational-effectiveness/organisation-design" }, // Note: links to existing Organisational Effectiveness page
+      { label: "Organisation Design", href: "/services/organisational-effectiveness/organisation-design" },
     ]
   },
   {
@@ -93,11 +93,15 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-background text-foreground border-border">
-              <div className="grid gap-4 p-4">
-                <Link href="/" className="flex items-center gap-2 mb-4" prefetch={false}>
-                  <Mountain className="h-6 w-6 text-primary" />
-                  <span className="font-headline text-xl font-bold text-foreground">Hindeshwar Consulting</span>
-                </Link>
+              <SheetHeader className="mb-4 border-b border-border pb-4">
+                <SheetTitle asChild>
+                  <Link href="/" className="flex items-center gap-2" prefetch={false}>
+                    <Mountain className="h-6 w-6 text-primary" />
+                    <span className="font-headline text-xl font-bold text-foreground">Hindeshwar Consulting</span>
+                  </Link>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="grid gap-4 p-0"> 
                 <nav className="grid gap-2">
                   <NavLinks items={navItems} isMobile={true} />
                 </nav>
