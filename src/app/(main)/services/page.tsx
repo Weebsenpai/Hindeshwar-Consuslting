@@ -2,20 +2,21 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { CheckCircle, ArrowRight, Brain, Settings, TrendingUp, Lightbulb } from "lucide-react"; 
+import { CheckCircle, ArrowRight, BarChart3, Settings, Lightbulb, TrendingUp } from "lucide-react"; 
 import Link from "next/link";
 
 const services = [
   {
-    id: "strategic-planning", 
-    icon: <Brain className="h-12 w-12 text-primary" />,
-    title: "Data & Strategic Analysis",
+    id: "data-analytics", 
+    icon: <BarChart3 className="h-12 w-12 text-primary" />, // Changed from Brain
+    title: "Data & Analytics", // Updated title
     shortDescription: "Leverage data for strategic insights and robust planning.",
-    longDescription: "Our strategic planning and data analysis services help you define your vision, set clear goals, and create actionable roadmaps. We analyze market trends, competitive landscapes, and internal capabilities to formulate strategies that drive sustainable growth and competitive advantage.",
+    longDescription: "Our data analysis services help you define your vision, set clear goals, and create actionable roadmaps. We analyze market trends, competitive landscapes, and internal capabilities to formulate strategies that drive sustainable growth and competitive advantage.",
     features: ["Market Analysis & Research", "Competitive Benchmarking", "Data-driven Insights", "Roadmap Creation", "Performance Metrics"],
     image: "https://placehold.co/600x400.png",
-    imageAlt: "Business professionals analyzing charts for strategic planning",
-    aiHint: "data analytics charts" 
+    imageAlt: "Business professionals analyzing charts for data and analytics", // Updated alt
+    aiHint: "data analytics charts",
+    href: "/services/data-analytics" // Updated href
   },
   {
     id: "operational-excellence", 
@@ -26,18 +27,20 @@ const services = [
     features: ["Process Optimization", "Lean Six Sigma", "Supply Chain Management", "Cost Reduction", "Technology Integration"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Gears turning to show operational efficiency",
-    aiHint: "gears efficiency process" 
+    aiHint: "gears efficiency process",
+    href: "/services/operational-excellence" // Updated href
   },
   {
-    id: "innovation-growth", 
+    id: "digital-transformation", // Changed from innovation-growth
     icon: <Lightbulb className="h-12 w-12 text-primary" />,
-    title: "Digital Transformation & Innovation",
+    title: "Digital Transformation", // Updated title
     shortDescription: "Foster innovation and identify new growth avenues through digital solutions.",
     longDescription: "In a rapidly evolving business environment, digital transformation and innovation are key. We assist you in cultivating a culture of innovation, exploring new market opportunities, and developing products or services that meet emerging customer needs, ensuring you remain a leader in your industry.",
     features: ["Digital Strategy", "Innovation Workshops", "New Market Entry", "Product Development", "Change Management"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Abstract digital connections and a lightbulb for innovation",
-    aiHint: "digital innovation network" 
+    aiHint: "digital innovation network",
+    href: "/services/digital-transformation" // Updated href
   },
    {
     id: "revenue-growth", 
@@ -48,7 +51,8 @@ const services = [
     features: ["Sales Channel Optimization", "Product Portfolio Management", "B2B Go-To-Market Strategy", "Market Expansion", "Pricing Strategies"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Upward trending graph symbolizing revenue growth",
-    aiHint: "growth graph revenue" 
+    aiHint: "growth graph revenue",
+    href: "/services/revenue-growth" // Updated href
   },
 ];
 
@@ -94,7 +98,7 @@ export default function ServicesPage() {
                 </ul>
                 <div className="mt-8">
                   <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 rounded-lg">
-                    <Link href={`/services/${service.id.includes("-") ? service.id.split('-')[0] + '/' + service.id.split('-').slice(1).join('-') : service.id}`}>
+                    <Link href={service.href}>
                        <span className="inline-flex items-center">
                         Explore {service.title} <ArrowRight className="ml-2 h-5 w-5" />
                       </span>

@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Mountain, Search, BarChart3, Settings, Lightbulb, TrendingUp } from "lucide-react";
+import { Menu, Mountain, Search, BarChart3, Settings, Lightbulb, TrendingUp, Brain, Target } from "lucide-react"; // Added Brain, Target
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
@@ -12,44 +12,44 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
     icon: BarChart3,
     title: "Data & Analytics",
     description: "Unlock insights, drive decisions.",
-    href: "/services/data-analytics/strategy-analysis",
+    href: "/services/data-analytics",
     subServices: [
-      { label: "Strategy & Analysis", href: "/services/data-analytics/strategy-analysis" },
-      { label: "Architecture & Modelling", href: "/services/data-analytics/architecture-centralization" },
-      { label: "Data Visualisation", href: "/services/data-analytics/data-visualization" },
+      { label: "Strategy & Analysis", href: "/services/data-analytics#strategy-analysis" },
+      { label: "Architecture & Modelling", href: "/services/data-analytics#architecture-modelling" },
+      { label: "Data Visualisation", href: "/services/data-analytics#data-visualization" },
     ]
   },
   {
-    icon: Settings,
+    icon: Settings, // Keeping Settings for OpEx as it's more encompassing than Target for the main category
     title: "Operational Excellence",
     description: "Optimize processes, boost efficiency.",
-    href: "/services/operational-excellence/operating-model",
+    href: "/services/operational-excellence",
     subServices: [
-      { label: "Process Re-engineering", href: "/services/operational-excellence/process-reengineering" },
-      { label: "Operating Model", href: "/services/operational-excellence/operating-model" },
-      { label: "Organisation Design", href: "/services/organisational-effectiveness/organisation-design" },
+      { label: "Process Re-engineering", href: "/services/operational-excellence#process-reengineering" },
+      { label: "Operating Model", href: "/services/operational-excellence#operating-model" },
+      { label: "Organisation Design", href: "/services/operational-excellence#organisation-design" },
     ]
   },
   {
     icon: Lightbulb,
     title: "Digital Transformation",
     description: "Innovate, adapt, and lead digitally.",
-    href: "/services/digital-transformation/strategy-analysis",
+    href: "/services/digital-transformation",
     subServices: [
-      { label: "Strategy & Analysis", href: "/services/digital-transformation/strategy-analysis" },
-      { label: "Innovation", href: "/services/digital-transformation/innovation" },
-      { label: "Digital Transformation Delivery", href: "/services/digital-transformation/delivery" },
+      { label: "Strategy & Analysis (Digital)", href: "/services/digital-transformation#strategy-analysis-digital" },
+      { label: "Innovation", href: "/services/digital-transformation#innovation" },
+      { label: "Digital Transformation Delivery", href: "/services/digital-transformation#digital-transformation-delivery" },
     ]
   },
   {
     icon: TrendingUp,
     title: "Revenue Growth",
     description: "Expand markets, accelerate sales.",
-    href: "/services/revenue-growth/b2b-go-to-market",
+    href: "/services/revenue-growth",
     subServices: [
-      { label: "Sales & Channel Management", href: "/services/revenue-growth/sales-channel-management" },
-      { label: "Product & Portfolio Management", href: "/services/revenue-growth/product-portfolio" },
-      { label: "B2B Go-To-Market", href: "/services/revenue-growth/b2b-go-to-market" },
+      { label: "Sales & Channel Management", href: "/services/revenue-growth#sales-channel-management" },
+      { label: "Product & Portfolio Management", href: "/services/revenue-growth#product-portfolio-management" },
+      { label: "B2B Go-To-Market", href: "/services/revenue-growth#b2b-go-to-market" },
     ]
   },
 ];
@@ -59,8 +59,8 @@ const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services",
-    serviceItems: serviceItemsForMegaMenu, 
+    href: "/services", // Main services page link
+    serviceItems: serviceItemsForMegaMenu,
   },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
@@ -93,7 +93,7 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-background text-foreground border-border">
-              <SheetHeader className="mb-4 border-b border-border pb-4">
+             <SheetHeader className="mb-4 border-b border-border pb-4">
                 <SheetTitle asChild>
                   <Link href="/" className="flex items-center gap-2" prefetch={false}>
                     <Mountain className="h-6 w-6 text-primary" />
