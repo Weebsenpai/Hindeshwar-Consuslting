@@ -93,7 +93,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                 </div>
               </HoverCardTrigger>
               <HoverCardContent
-                align="start"
+                align="center" // Changed from "start" to "center"
                 sideOffset={18} 
                 className="w-auto max-w-xl p-4 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border" 
               >
@@ -110,7 +110,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                               <li key={link.href}>
                                 <Link
                                   href={link.href}
-                                  className="text-sm text-card-foreground/80 hover:text-primary transition-colors duration-150"
+                                  className="text-sm text-card-foreground hover:text-primary transition-colors duration-150" // Reverted link color
                                   prefetch={false}
                                 >
                                   {link.label}
@@ -207,7 +207,6 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                         prefetch={false}
                     >
                      {item.label}
-                     {/* Optionally add a chevron if you want to indicate it expands, but it's a link too */}
                     </Link>
                     <div className="ml-4 mt-1 space-y-1 border-l border-border pl-4">
                     {allLinks.map(link => (
