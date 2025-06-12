@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Briefcase, BarChart3, Lightbulb, ArrowRight, Users, Brain } from "lucide-react";
+import { ArrowRight, Brain, BarChart3, Lightbulb } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -16,7 +16,7 @@ export default function HomePage() {
             alt="Global business strategy"
             fill
             className="opacity-20 object-cover"
-            data-ai-hint="abstract business"
+            data-ai-hint="dynamic abstract cityscape" 
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
@@ -30,7 +30,11 @@ export default function HomePage() {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button asChild size="lg" className="text-lg px-8 py-7 rounded-lg bg-primary text-primary-foreground hover:bg-primary/80 w-full sm:w-auto">
-              <Link href="/services">Explore Our Expertise <ArrowRight className="ml-2 h-5 w-5" /></Link>
+              <Link href="/services">
+                <span className="inline-flex items-center">
+                  Explore Our Expertise <ArrowRight className="ml-2 h-5 w-5" />
+                </span>
+              </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-lg px-8 py-7 rounded-lg border-primary text-primary hover:bg-primary/10 hover:text-primary w-full sm:w-auto">
               <Link href="/contact">Read Insights</Link>
@@ -81,7 +85,11 @@ export default function HomePage() {
                 </CardContent>
                 <div className="p-6 pt-0 text-center">
                    <Button asChild variant="link" className="text-primary hover:text-accent font-semibold">
-                    <Link href={service.href}>Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                    <Link href={service.href}>
+                      <span className="inline-flex items-center">
+                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      </span>
+                    </Link>
                   </Button>
                 </div>
               </Card>
@@ -112,7 +120,7 @@ export default function HomePage() {
                 width={600}
                 height={400}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                data-ai-hint="team collaboration"
+                data-ai-hint="professionals collaborating office"
               />
             </div>
           </div>

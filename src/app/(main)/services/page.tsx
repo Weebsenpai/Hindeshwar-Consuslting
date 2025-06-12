@@ -1,12 +1,13 @@
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Briefcase, BarChart3, Lightbulb, CheckCircle, ArrowRight, Brain, Settings, TrendingUp } from "lucide-react";
+import { CheckCircle, ArrowRight, Brain, Settings, TrendingUp, Lightbulb } from "lucide-react"; 
 import Link from "next/link";
 
 const services = [
   {
-    id: "strategic-planning", // Corresponds to Data & Analytics -> Strategy & Analysis
+    id: "strategic-planning", 
     icon: <Brain className="h-12 w-12 text-primary" />,
     title: "Data & Strategic Analysis",
     shortDescription: "Leverage data for strategic insights and robust planning.",
@@ -14,10 +15,10 @@ const services = [
     features: ["Market Analysis & Research", "Competitive Benchmarking", "Data-driven Insights", "Roadmap Creation", "Performance Metrics"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Business professionals analyzing charts for strategic planning",
-    aiHint: "data analysis"
+    aiHint: "data insights charts" 
   },
   {
-    id: "operational-excellence", // Main category
+    id: "operational-excellence", 
     icon: <Settings className="h-12 w-12 text-primary" />,
     title: "Operational Excellence",
     shortDescription: "Optimize your operations for efficiency, productivity, and cost-effectiveness.",
@@ -25,10 +26,10 @@ const services = [
     features: ["Process Optimization", "Lean Six Sigma", "Supply Chain Management", "Cost Reduction", "Technology Integration"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Gears turning to show operational efficiency",
-    aiHint: "process optimization"
+    aiHint: "efficient gears mechanism" 
   },
   {
-    id: "innovation-growth", // Corresponds to Digital Transformation -> Innovation
+    id: "innovation-growth", 
     icon: <Lightbulb className="h-12 w-12 text-primary" />,
     title: "Digital Transformation & Innovation",
     shortDescription: "Foster innovation and identify new growth avenues through digital solutions.",
@@ -36,10 +37,10 @@ const services = [
     features: ["Digital Strategy", "Innovation Workshops", "New Market Entry", "Product Development", "Change Management"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Abstract digital connections and a lightbulb for innovation",
-    aiHint: "digital innovation"
+    aiHint: "digital network lightbulb" 
   },
    {
-    id: "revenue-growth", // Main category
+    id: "revenue-growth", 
     icon: <TrendingUp className="h-12 w-12 text-primary" />,
     title: "Revenue Growth Strategies",
     shortDescription: "Unlock new revenue streams and maximize market potential.",
@@ -47,7 +48,7 @@ const services = [
     features: ["Sales Channel Optimization", "Product Portfolio Management", "B2B Go-To-Market Strategy", "Market Expansion", "Pricing Strategies"],
     image: "https://placehold.co/600x400.png",
     imageAlt: "Upward trending graph symbolizing revenue growth",
-    aiHint: "revenue increase"
+    aiHint: "upward graph success" 
   },
 ];
 
@@ -86,14 +87,18 @@ export default function ServicesPage() {
                 <ul className="mt-6 space-y-3">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-center">
-                      <CheckCircle className="mr-3 h-6 w-6 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="mr-3 h-6 w-6 text-primary flex-shrink-0" /> 
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-8">
                   <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 rounded-lg">
-                    <Link href={`/services/${service.id.includes("-") ? service.id.split('-')[0] + '/' + service.id.split('-').slice(1).join('-') : service.id}`}>Explore {service.title} <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                    <Link href={`/services/${service.id.includes("-") ? service.id.split('-')[0] + '/' + service.id.split('-').slice(1).join('-') : service.id}`}>
+                       <span className="inline-flex items-center">
+                        Explore {service.title} <ArrowRight className="ml-2 h-5 w-5" />
+                      </span>
+                    </Link>
                   </Button>
                 </div>
               </div>

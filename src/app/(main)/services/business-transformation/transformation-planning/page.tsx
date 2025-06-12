@@ -12,8 +12,10 @@ export default function ServiceTransformationPlanningPage() {
     <div className="container py-12 md:py-16 text-foreground">
       <Button variant="outline" asChild className="mb-8 group hover:bg-primary/10">
         <Link href="/services">
-          <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-          Back to All Services
+          <span className="inline-flex items-center">
+            <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            Back to All Services
+          </span>
         </Link>
       </Button>
       <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-2">
@@ -47,7 +49,7 @@ export default function ServiceTransformationPlanningPage() {
                 width={600} 
                 height={400} 
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                data-ai-hint="project planning"
+                data-ai-hint="strategic roadmap blueprint"
             />
         </div>
       </div>

@@ -70,10 +70,10 @@ export default function ContactPage() {
         <Image
             src="https://placehold.co/1200x500.png"
             alt="Map to Hindeshwar Consulting"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-30"
-            data-ai-hint="world map"
+            fill // Changed layout to fill
+            objectFit="cover" // ensure this is compatible with fill, or use className="object-cover"
+            className="opacity-30 object-cover"
+            data-ai-hint="abstract city map"
         />
         <div className="container h-full py-8 relative z-10 flex items-center justify-center">
             <div className="bg-background/80 backdrop-blur-sm p-8 rounded-lg shadow-2xl text-center">

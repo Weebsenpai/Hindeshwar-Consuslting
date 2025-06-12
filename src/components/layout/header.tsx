@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Mountain, Search, ArrowRight } from "lucide-react";
+import { Menu, Mountain, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
@@ -11,7 +11,7 @@ const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
     label: "Services",
-    href: "/services",
+    href: "/services", // Main link for mobile or if mega menu isn't used
     megaMenuColumns: [
       {
         groups: [
@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
               { href: "/services/data-analytics/data-visualization", label: "Data Visualisation" },
             ],
           },
-           {
+           { // Example of a second group in the first column
             title: "ESG",
             links: [
               { href: "/services/esg/sustainability-strategy", label: "Sustainability Strategy" },
@@ -43,7 +43,7 @@ const navItems: NavItem[] = [
             ],
           },
            {
-            title: "Strategy",
+            title: "Strategy", // Example from user's original broader list
             links: [
                 { href: "/services/strategy/business-strategy", label: "Business Strategy" },
                 { href: "/services/strategy/digital-strategy", label: "Digital Strategy" },
@@ -62,7 +62,7 @@ const navItems: NavItem[] = [
             ],
           },
            {
-            title: "Organisational Effectiveness",
+            title: "Organisational Effectiveness", // Example
             links: [
                 { href: "/services/organisational-effectiveness/organisation-design", label: "Organisation Design" },
                 { href: "/services/organisational-effectiveness/operating-model", label: "Operating Model (Org Effect.)" },
@@ -81,7 +81,7 @@ const navItems: NavItem[] = [
             ],
           },
             {
-            title: "Business Transformation",
+            title: "Business Transformation", // Example
             links: [
               { href: "/services/business-transformation/transformation-strategy", label: "Transformation Strategy" },
               { href: "/services/business-transformation/transformation-planning", label: "Transformation Planning" },
@@ -106,16 +106,14 @@ export function Header() {
         </Link>
         
         <div className="flex items-center gap-4">
-          <nav className="hidden items-center gap-3 md:flex">
+          <nav className="hidden items-center gap-2 md:flex"> {/* Increased gap for better spacing */}
             <NavLinks items={navItems} />
           </nav>
           <div className="hidden md:flex items-center gap-2">
             <Button variant="ghost" size="icon" aria-label="Search" className="text-foreground hover:text-primary">
               <Search className="h-5 w-5" />
             </Button>
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 px-6 py-3 rounded-lg">
-              <Link href="/contact">Talk To A Consultant <ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
+            {/* "Talk To A Consultant" button removed from here */}
           </div>
           <Sheet>
             <SheetTrigger asChild>
@@ -137,9 +135,7 @@ export function Header() {
                    <Button variant="ghost" size="lg" aria-label="Search" className="text-foreground hover:text-primary justify-start">
                     <Search className="mr-2 h-5 w-5" /> Search
                   </Button>
-                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 w-full">
-                    <Link href="/contact">Talk To A Consultant <ArrowRight className="ml-2 h-5 w-5" /></Link>
-                  </Button>
+                  {/* "Talk To A Consultant" button removed from mobile sheet as well, will be a global FAB */}
                 </div>
               </div>
             </SheetContent>
