@@ -55,14 +55,14 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
       isActive ? "text-primary font-semibold" : "text-muted-foreground",
       disabled && "pointer-events-none opacity-50",
       isMobile
-        ? "block rounded-md px-3 py-2 text-base hover:bg-accent hover:text-accent-foreground w-full text-left" // ensure full width for mobile
+        ? "block rounded-md px-3 py-2 text-base hover:bg-accent hover:text-accent-foreground w-full text-left" 
         : "px-3 py-2 rounded-md",
-      !isMobile && isTrigger && "cursor-pointer flex items-center gap-1 group" // Added group for ChevronDown rotation
+      !isMobile && isTrigger && "cursor-pointer flex items-center gap-1 group" 
     );
 
   const dropdownMenuItemLinkClasses = (href: string | undefined, disabled?: boolean) =>
     cn(
-      "w-full text-left text-card-foreground hover:text-primary", // Ensure text color for light card background
+      "w-full text-left text-card-foreground hover:text-primary", 
       pathname === href ? "text-primary font-semibold" : "",
       disabled && "pointer-events-none opacity-50"
     );
@@ -82,8 +82,8 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                     navLinkClasses(item.href, item.disabled, true, isActive),
                     "group outline-none cursor-pointer"
                   )}
-                  role="button" // for accessibility
-                  tabIndex={0} // for keyboard navigation
+                  role="button" 
+                  tabIndex={0} 
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.currentTarget.click(); }}
                 >
                   {item.label}
@@ -94,23 +94,23 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
               </HoverCardTrigger>
               <HoverCardContent
                 align="start"
-                sideOffset={18} // Increased offset
-                className="w-auto max-w-5xl p-6 bg-card text-card-foreground shadow-2xl rounded-lg z-[60] border-border" 
+                sideOffset={18} 
+                className="w-auto max-w-xl p-4 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border" 
               >
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6">
+                <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                   {item.megaMenuColumns.map((column, columnIndex) => (
-                    <div key={columnIndex} className="space-y-6">
+                    <div key={columnIndex} className="space-y-4">
                       {column.groups.map((group) => (
                         <div key={group.title}>
-                          <h4 className="font-semibold text-primary text-[0.9rem] mb-3 border-b border-dotted border-border pb-2">
+                          <h4 className="text-[0.9rem] font-semibold text-card-foreground mb-2">
                             {group.title}
                           </h4>
-                          <ul className="space-y-2 mt-2">
+                          <ul className="space-y-1.5 mt-1.5">
                             {group.links.map((link) => (
                               <li key={link.href}>
                                 <Link
                                   href={link.href}
-                                  className="text-sm text-card-foreground hover:text-primary hover:underline"
+                                  className="text-sm text-card-foreground/80 hover:text-primary transition-colors duration-150"
                                   prefetch={false}
                                 >
                                   {link.label}
@@ -134,7 +134,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
               <ChevronDown
                 className={cn(
                   "h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180 text-muted-foreground group-hover:text-primary",
-                  isMobile ? "ml-auto" : "" // Ensure chevron is at the end on mobile
+                  isMobile ? "ml-auto" : "" 
                 )}
               />
             </>
@@ -165,7 +165,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                 align={isMobile ? "center" : "start"}
                 className={cn(
                   isMobile ? "w-[calc(100vw-5rem)] min-w-[calc(100vw-5rem)]" : "min-w-[220px]",
-                  "mt-1 z-[60] bg-card text-card-foreground border-border shadow-xl" // Added styles for dark theme
+                  "mt-1 z-[60] bg-card text-card-foreground border-border shadow-xl" 
                 )}
               >
                 {item.children.map((child) => {
@@ -195,45 +195,32 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
           );
         } else if (item.href) {
           // REGULAR LINK (Desktop or Mobile)
-          // For mobile and "Services" which has megaMenu but not children, it should be a simple link.
-          if (isMobile && item.megaMenuColumns && item.href) { // This handles the main "Services" link on mobile
-             const mobileLinkElement = (
-              <Link
-                href={item.href} 
-                className={navLinkClasses(item.href, item.disabled, false, isActive)}
-                prefetch={false}
-              >
-                {item.label}
-              </Link>
-            );
-            // For mobile, if it's a mega menu item, we still want to list its sub-pages
-            // This section is complex due to mobile mega menu adaptation, simplifying to direct link for now
-            // Or, list children if defined, otherwise direct link
-            if(item.megaMenuColumns.length > 0 && isMobile) {
-                 const allLinks: NavLink[] = [];
-                 item.megaMenuColumns.forEach(col => col.groups.forEach(group => allLinks.push(...group.links)));
-                 
-                 return (
-                    <div key={item.label}>
-                        <div className={cn(navLinkClasses(item.href, item.disabled, true, isActive), "flex items-center justify-between w-full text-foreground font-semibold")}>
-                         {item.label}
-                        </div>
-                        <div className="ml-4 mt-1 space-y-1 border-l border-border pl-4">
-                        {allLinks.map(link => (
-                             <SheetClose asChild key={link.href}>
-                                 <Link href={link.href} className={navLinkClasses(link.href, link.disabled, false, pathname.startsWith(link.href))}>
-                                     {link.label}
-                                 </Link>
-                             </SheetClose>
-                         ))}
-                        </div>
+          if (isMobile && item.megaMenuColumns && item.href) { 
+             const allLinks: NavLink[] = [];
+             item.megaMenuColumns.forEach(col => col.groups.forEach(group => allLinks.push(...group.links)));
+             
+             return (
+                <div key={item.label}>
+                    <Link 
+                        href={item.href} 
+                        className={cn(navLinkClasses(item.href, item.disabled, false, isActive), "font-semibold text-foreground flex items-center justify-between w-full")}
+                        prefetch={false}
+                    >
+                     {item.label}
+                     {/* Optionally add a chevron if you want to indicate it expands, but it's a link too */}
+                    </Link>
+                    <div className="ml-4 mt-1 space-y-1 border-l border-border pl-4">
+                    {allLinks.map(link => (
+                         <SheetClose asChild key={link.href}>
+                             <Link href={link.href} className={navLinkClasses(link.href, link.disabled, false, pathname.startsWith(link.href))}>
+                                 {link.label}
+                             </Link>
+                         </SheetClose>
+                     ))}
                     </div>
-                 );
-            }
-
-            return <SheetClose asChild key={item.href}>{mobileLinkElement}</SheetClose>;
+                </div>
+             );
           }
-
 
           const linkElement = (
             <Link
