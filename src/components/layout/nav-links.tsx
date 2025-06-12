@@ -33,7 +33,6 @@ export interface SubServiceItem {
 export interface ServiceItem {
   icon: LucideIcon;
   title: string;
-  description?: string; 
   href: string;
   subServices?: SubServiceItem[];
 }
@@ -107,9 +106,9 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                   <div>
                     <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Core Pillars</h4>
-                    <div className="space-y-3">
+                    <div className="space-y-1"> {/* Adjusted spacing */}
                       {firstColumnItems.map((service) => (
-                        <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent hover:border-primary/30 transition-all duration-200 ease-in-out">
+                        <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent hover:bg-accent/10 transition-all duration-200 ease-in-out">
                           <Link
                             href={service.href}
                             className="flex items-start gap-3"
@@ -125,7 +124,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-2 space-y-1.5 pl-8 list-none">
+                            <ul className="mt-1.5 space-y-1 pl-8 list-none"> {/* Adjusted margin */}
                               {service.subServices.map((subService) => (
                                 <li key={subService.href}>
                                   <Link
@@ -145,9 +144,9 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                   </div>
                   <div>
                     <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Strategic Focus</h4>
-                     <div className="space-y-3">
+                     <div className="space-y-1"> {/* Adjusted spacing */}
                       {secondColumnItems.map((service) => (
-                        <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent hover:border-primary/30 transition-all duration-200 ease-in-out">
+                         <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent hover:bg-accent/10 transition-all duration-200 ease-in-out">
                           <Link
                             href={service.href}
                             className="flex items-start gap-3"
@@ -163,7 +162,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-2 space-y-1.5 pl-8 list-none">
+                            <ul className="mt-1.5 space-y-1 pl-8 list-none"> {/* Adjusted margin */}
                               {service.subServices.map((subService) => (
                                 <li key={subService.href}>
                                   <Link
