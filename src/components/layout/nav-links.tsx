@@ -33,7 +33,7 @@ export interface SubServiceItem {
 export interface ServiceItem {
   icon: LucideIcon;
   title: string;
-  description: string; // Will be ignored in rendering but kept in type for data consistency
+  description?: string; 
   href: string;
   subServices?: SubServiceItem[];
 }
@@ -122,11 +122,10 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                               <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
                                 {service.title}
                               </p>
-                              {/* Description removed as per request */}
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-2 space-y-1.5 pl-8 list-none"> {/* Adjusted pl from pl-10, mt from mt-1 */}
+                            <ul className="mt-2 space-y-1.5 pl-8 list-none">
                               {service.subServices.map((subService) => (
                                 <li key={subService.href}>
                                   <Link
@@ -161,11 +160,10 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                               <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
                                 {service.title}
                               </p>
-                               {/* Description removed as per request */}
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-2 space-y-1.5 pl-8 list-none"> {/* Adjusted pl from pl-10, mt from mt-1 */}
+                            <ul className="mt-2 space-y-1.5 pl-8 list-none">
                               {service.subServices.map((subService) => (
                                 <li key={subService.href}>
                                   <Link
@@ -278,8 +276,6 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                                 <serviceLink.icon className="h-5 w-5 text-primary flex-shrink-0" />
                                 <div>
                                   <span className="block text-sm text-foreground">{serviceLink.title}</span>
-                                  {/* Mobile description can be kept if desired, or removed for consistency */}
-                                  {/* <span className="block text-xs text-muted-foreground">{serviceLink.description}</span> */}
                                 </div>
                              </Link>
                          </SheetClose>
