@@ -2,47 +2,35 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Mountain, Search, MapPin, Star, CalendarCheck, UserCircle2, MessageSquareText, MonitorSmartphone } from "lucide-react";
+import { Menu, Mountain, Search, BarChart3, Settings, Lightbulb, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
 
 const serviceItemsForMegaMenu = [
   {
-    icon: MapPin,
-    title: "Digital Strategy",
-    description: "Navigate the digital landscape effectively.",
-    href: "/services/digital-transformation/strategy-analysis",
-  },
-  {
-    icon: Star,
-    title: "Data Insights",
-    description: "Leverage data for impactful decisions.",
+    icon: BarChart3,
+    title: "Data & Analytics",
+    description: "Unlock insights, drive decisions.",
     href: "/services/data-analytics/strategy-analysis",
   },
   {
-    icon: CalendarCheck,
-    title: "Process Optimization",
-    description: "Streamline operations for peak efficiency.",
-    href: "/services/operational-excellence/process-reengineering",
+    icon: Settings,
+    title: "Operational Excellence",
+    description: "Optimize processes, boost efficiency.",
+    href: "/services/operational-excellence/operating-model",
   },
   {
-    icon: UserCircle2,
-    title: "Customer Engagement",
-    description: "Enhance sales & manage channels.",
-    href: "/services/revenue-growth/sales-channel-management",
+    icon: Lightbulb,
+    title: "Digital Transformation",
+    description: "Innovate, adapt, and lead digitally.",
+    href: "/services/digital-transformation/strategy-analysis",
   },
   {
-    icon: MessageSquareText,
-    title: "Innovation Hub",
-    description: "Foster creativity and new solutions.",
-    href: "/services/digital-transformation/innovation",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Digital Delivery",
-    description: "Execute your digital projects.",
-    href: "/services/digital-transformation/delivery",
+    icon: TrendingUp,
+    title: "Revenue Growth",
+    description: "Expand markets, accelerate sales.",
+    href: "/services/revenue-growth/b2b-go-to-market",
   },
 ];
 
@@ -52,10 +40,7 @@ const navItems: NavItem[] = [
   {
     label: "Services",
     href: "/services",
-    // New structure for the 2x3 grid inspired mega menu
-    serviceItems: serviceItemsForMegaMenu,
-    // Old megaMenuColumns structure is replaced by serviceItems for this NavItem
-    // megaMenuColumns: [ /* ... existing complex structure ... */ ],
+    serviceItems: serviceItemsForMegaMenu, 
   },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
@@ -109,3 +94,4 @@ export function Header() {
     </header>
   );
 }
+

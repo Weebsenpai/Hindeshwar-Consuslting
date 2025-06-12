@@ -37,7 +37,7 @@ export interface NavItem {
   href?: string;
   disabled?: boolean;
   children?: NavLink[]; 
-  serviceItems?: ServiceItem[]; // New property for the gosite-style mega menu
+  serviceItems?: ServiceItem[];
 }
 
 interface NavLinksProps {
@@ -73,6 +73,10 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
 
         if (!isMobile && item.serviceItems && item.serviceItems.length > 0) {
           // DESKTOP "GOSITE-STYLE" MEGA MENU (HoverCard)
+          // Splitting the 4 service items into two columns for 2x2 grid
+          const firstColumnItems = item.serviceItems.slice(0, 2);
+          const secondColumnItems = item.serviceItems.slice(2, 4);
+
           return (
             <HoverCard key={item.label} openDelay={50} closeDelay={150}>
               <HoverCardTrigger asChild>
@@ -94,31 +98,59 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
               <HoverCardContent
                 align="center"
                 sideOffset={10} 
-                className="w-auto max-w-xl p-5 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border" 
-                // Note: The triangular caret/arrow from the example image requires custom CSS/SVG
-                // and is not implemented here for simplicity.
+                className="w-auto max-w-xl p-4 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border"
               >
-                <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                  {item.serviceItems.map((service) => (
-                    <Link
-                      key={service.href}
-                      href={service.href}
-                      className="group flex items-start gap-3 p-3 -m-3 rounded-lg hover:bg-accent/60 transition-colors duration-150"
-                      prefetch={false}
-                    >
-                      <div className="text-primary mt-0.5 flex-shrink-0">
-                        <service.icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-150 text-sm">
-                          {service.title}
-                        </p>
-                        <p className="text-xs text-muted-foreground group-hover:text-card-foreground/90 transition-colors duration-150">
-                          {service.description}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
+                <div className="grid grid-cols-2 gap-x-6">
+                  <div>
+                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Core Pillars</h4>
+                    <div className="space-y-3">
+                      {firstColumnItems.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="group flex items-start gap-3 p-2 -m-2 rounded-lg hover:bg-accent/20 transition-colors duration-150"
+                          prefetch={false}
+                        >
+                          <div className="text-primary mt-1 flex-shrink-0">
+                            <service.icon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-150 text-sm">
+                              {service.title}
+                            </p>
+                            <p className="text-xs text-muted-foreground group-hover:text-card-foreground/90 transition-colors duration-150">
+                              {service.description}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Strategic Focus</h4>
+                     <div className="space-y-3">
+                      {secondColumnItems.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="group flex items-start gap-3 p-2 -m-2 rounded-lg hover:bg-accent/20 transition-colors duration-150"
+                          prefetch={false}
+                        >
+                          <div className="text-primary mt-1 flex-shrink-0">
+                            <service.icon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-150 text-sm">
+                              {service.title}
+                            </p>
+                            <p className="text-xs text-muted-foreground group-hover:text-card-foreground/90 transition-colors duration-150">
+                              {service.description}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </HoverCardContent>
             </HoverCard>
@@ -193,7 +225,6 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
         } else if (item.href) {
           // REGULAR LINK or MOBILE "GOSITE-STYLE" LIST
           if (isMobile && item.serviceItems && item.serviceItems.length > 0) { 
-             // For mobile, render the serviceItems as a list under the main "Services" link.
              return (
                 <div key={item.label} className="w-full">
                     <Link 
@@ -202,14 +233,13 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                         prefetch={false}
                     >
                      {item.label}
-                     {/* Optionally add a chevron if you want to indicate it expands, but it won't be a separate dropdown */}
                     </Link>
                     <div className="ml-0 mt-1 space-y-1 pt-1">
                     {item.serviceItems.map(serviceLink => (
                          <SheetClose asChild key={serviceLink.href}>
                              <Link 
                                 href={serviceLink.href} 
-                                className={cn(navLinkClasses(serviceLink.href, item.disabled, false, pathname.startsWith(serviceLink.href)), "flex items-center gap-3 p-2 rounded-md hover:bg-accent/60")}
+                                className={cn(navLinkClasses(serviceLink.href, item.disabled, false, pathname.startsWith(serviceLink.href)), "flex items-center gap-3 p-2 rounded-md hover:bg-accent/20")}
                              >
                                 <serviceLink.icon className="h-5 w-5 text-primary flex-shrink-0" />
                                 <div>
@@ -244,3 +274,4 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
     </>
   );
 }
+
