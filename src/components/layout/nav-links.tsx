@@ -35,7 +35,7 @@ export interface SubServiceItem {
 export interface ServiceItem {
   icon: LucideIcon;
   title: string;
-  description: string; // Ensure description is part of the type
+  description?: string; 
   href: string;
   subServices?: SubServiceItem[];
 }
@@ -46,7 +46,7 @@ export interface NavItem {
   disabled?: boolean;
   children?: NavLink[];
   serviceItems?: ServiceItem[];
-  isIndustriesMenu?: boolean; // Flag for Industries menu specific rendering
+  isIndustriesMenu?: boolean; 
 }
 
 interface NavLinksProps {
@@ -82,13 +82,13 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
 
         if (!isMobile && item.serviceItems && item.serviceItems.length > 0) {
           const isIndustries = !!item.isIndustriesMenu;
-          // For industries, first two items in first col, rest in second. For services, it's 2 and 2.
-          const col1Count = isIndustries ? (item.serviceItems.length > 1 ? 2 : item.serviceItems.length) : 2;
-          const firstColumnItems = item.serviceItems.slice(0, col1Count);
-          const secondColumnItems = item.serviceItems.slice(col1Count, item.serviceItems.length);
           
-          const col1Title = isIndustries ? "Key Sectors" : "Core Pillars";
-          const col2Title = isIndustries ? "Focus Areas" : "Strategic Focus";
+          const col1CountServices = 2;
+          const firstColumnItemsServices = item.serviceItems.slice(0, col1CountServices);
+          const secondColumnItemsServices = item.serviceItems.slice(col1CountServices, item.serviceItems.length);
+          
+          const col1TitleServices = "Core Pillars";
+          const col2TitleServices = "Strategic Focus";
 
 
           return (
@@ -125,92 +125,105 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                   </>
                 )}
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                  <div>
-                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col1Title}</h4>
-                    <div className="space-y-1"> 
-                      {firstColumnItems.map((service) => (
-                        <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
-                          <Link
-                            href={service.href}
-                            className="flex items-start gap-3"
-                            prefetch={false}
-                          >
-                            <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
-                              <service.icon className="h-5 w-5" />
-                            </div>
-                            <div className="flex-grow">
-                              <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
-                                {service.title}
-                              </p>
-                              {service.description && !isIndustries && ( // Show description only for services, not industries main items
-                                 <p className="text-xs text-card-foreground/70 group-hover/service-item:text-primary/80 transition-colors duration-150 mt-0.5">
-                                  {service.description}
-                                </p>
+                  {isIndustries ? (
+                    item.serviceItems.map((service) => (
+                      <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
+                        <Link
+                          href={service.href}
+                          className="flex items-start gap-3"
+                          prefetch={false}
+                        >
+                          <div className="text-primary mt-1 flex-shrink-0">
+                            <service.icon className="h-5 w-5" />
+                          </div>
+                          <div className="flex-grow">
+                            <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
+                              {service.title}
+                            </p>
+                          </div>
+                        </Link>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div> {/* Column 1 for Services */}
+                        <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col1TitleServices}</h4>
+                        <div className="space-y-1"> 
+                          {firstColumnItemsServices.map((service) => (
+                            <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
+                              <Link
+                                href={service.href}
+                                className="flex items-start gap-3"
+                                prefetch={false}
+                              >
+                                <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
+                                  <service.icon className="h-5 w-5" />
+                                </div>
+                                <div className="flex-grow">
+                                  <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
+                                    {service.title}
+                                  </p>
+                                </div>
+                              </Link>
+                              {service.subServices && service.subServices.length > 0 && (
+                                <ul className="mt-1.5 space-y-1 pl-8 list-none">
+                                  {service.subServices.map((subService) => (
+                                    <li key={subService.href}>
+                                      <Link
+                                        href={subService.href}
+                                        className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
+                                        prefetch={false}
+                                      >
+                                        {subService.label}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
                               )}
                             </div>
-                          </Link>
-                          {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-1.5 space-y-1 pl-8 list-none">
-                              {service.subServices.map((subService) => (
-                                <li key={subService.href}>
-                                  <Link
-                                    href={subService.href}
-                                    className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
-                                    prefetch={false}
-                                  >
-                                    {subService.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col2Title}</h4>
-                     <div className="space-y-1"> 
-                      {secondColumnItems.map((service) => (
-                         <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
-                          <Link
-                            href={service.href}
-                            className="flex items-start gap-3"
-                            prefetch={false}
-                          >
-                            <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
-                              <service.icon className="h-5 w-5" />
-                            </div>
-                            <div className="flex-grow">
-                              <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
-                                {service.title}
-                              </p>
-                               {service.description && !isIndustries && ( // Show description only for services
-                                 <p className="text-xs text-card-foreground/70 group-hover/service-item:text-primary/80 transition-colors duration-150 mt-0.5">
-                                  {service.description}
-                                </p>
+                      </div>
+                      <div> {/* Column 2 for Services */}
+                        <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col2TitleServices}</h4>
+                         <div className="space-y-1"> 
+                          {secondColumnItemsServices.map((service) => (
+                            <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
+                              <Link
+                                href={service.href}
+                                className="flex items-start gap-3"
+                                prefetch={false}
+                              >
+                                <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
+                                  <service.icon className="h-5 w-5" />
+                                </div>
+                                <div className="flex-grow">
+                                  <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
+                                    {service.title}
+                                  </p>
+                                </div>
+                              </Link>
+                              {service.subServices && service.subServices.length > 0 && (
+                                <ul className="mt-1.5 space-y-1 pl-8 list-none">
+                                  {service.subServices.map((subService) => (
+                                    <li key={subService.href}>
+                                      <Link
+                                        href={subService.href}
+                                        className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
+                                        prefetch={false}
+                                      >
+                                        {subService.label}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
                               )}
                             </div>
-                          </Link>
-                          {service.subServices && service.subServices.length > 0 && (
-                            <ul className="mt-1.5 space-y-1 pl-8 list-none">
-                              {service.subServices.map((subService) => (
-                                <li key={subService.href}>
-                                  <Link
-                                    href={subService.href}
-                                    className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
-                                    prefetch={false}
-                                  >
-                                    {subService.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </HoverCardContent>
             </HoverCard>
@@ -333,3 +346,5 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
     </>
   );
 }
+
+    
