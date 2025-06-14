@@ -11,7 +11,6 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
   {
     icon: BarChart3,
     title: "Data & Analytics",
-    description: "Unlock insights, drive decisions.",
     href: "/services/data-analytics",
     subServices: [
       { label: "Strategy & Analysis", href: "/services/data-analytics#strategy-analysis" },
@@ -22,7 +21,6 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
   {
     icon: Settings,
     title: "Operational Excellence",
-    description: "Optimize processes, boost efficiency.",
     href: "/services/operational-excellence",
     subServices: [
       { label: "Process Re-engineering", href: "/services/operational-excellence#process-reengineering" },
@@ -33,7 +31,6 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
   {
     icon: Lightbulb,
     title: "Digital Transformation",
-    description: "Innovate, adapt, and lead digitally.",
     href: "/services/digital-transformation",
     subServices: [
       { label: "Strategy & Analysis (Digital)", href: "/services/digital-transformation#strategy-analysis-digital" },
@@ -44,7 +41,6 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
   {
     icon: TrendingUp,
     title: "Revenue Growth",
-    description: "Expand markets, accelerate sales.",
     href: "/services/revenue-growth",
     subServices: [
       { label: "Sales & Channel Management", href: "/services/revenue-growth#sales-channel-management" },
@@ -82,7 +78,7 @@ const navItems: NavItem[] = [
     label: "Industries",
     href: "/industries",
     serviceItems: industryItemsForMegaMenu,
-    isIndustriesMenu: true, // Flag to identify industries menu for special rendering
+    isIndustriesMenu: true, 
   },
   {
     label: "Services",
@@ -104,7 +100,7 @@ export function Header() {
         </Link>
         
         <div className="flex items-center gap-4">
-          <nav className="hidden items-center gap-2 md:flex">
+          <nav className="hidden items-center gap-2 md:flex md:ml-8">
             <NavLinks items={navItems} />
           </nav>
           <div className="hidden md:flex items-center gap-2">
