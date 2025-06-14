@@ -17,7 +17,9 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+
 
 export interface NavLink {
   href: string;
@@ -33,6 +35,7 @@ export interface SubServiceItem {
 export interface ServiceItem {
   icon: LucideIcon;
   title: string;
+  description: string; // Ensure description is part of the type
   href: string;
   subServices?: SubServiceItem[];
 }
@@ -43,6 +46,7 @@ export interface NavItem {
   disabled?: boolean;
   children?: NavLink[];
   serviceItems?: ServiceItem[];
+  isIndustriesMenu?: boolean; // Flag for Industries menu specific rendering
 }
 
 interface NavLinksProps {
@@ -77,8 +81,15 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
         const isActive = item.href ? pathname.startsWith(item.href) : false;
 
         if (!isMobile && item.serviceItems && item.serviceItems.length > 0) {
-          const firstColumnItems = item.serviceItems.slice(0, 2);
-          const secondColumnItems = item.serviceItems.slice(2, 4);
+          const isIndustries = !!item.isIndustriesMenu;
+          // For industries, first two items in first col, rest in second. For services, it's 2 and 2.
+          const col1Count = isIndustries ? (item.serviceItems.length > 1 ? 2 : item.serviceItems.length) : 2;
+          const firstColumnItems = item.serviceItems.slice(0, col1Count);
+          const secondColumnItems = item.serviceItems.slice(col1Count, item.serviceItems.length);
+          
+          const col1Title = isIndustries ? "Key Sectors" : "Core Pillars";
+          const col2Title = isIndustries ? "Focus Areas" : "Strategic Focus";
+
 
           return (
             <HoverCard key={item.label} openDelay={50} closeDelay={150}>
@@ -103,9 +114,19 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                 sideOffset={10}
                 className="w-auto max-w-xl p-4 bg-card text-card-foreground shadow-xl rounded-lg z-[60] border-border"
               >
+                {isIndustries && (
+                  <>
+                    <div className="mb-3">
+                      <Link href="/industries" className="flex items-center text-sm font-medium text-primary hover:underline" prefetch={false}>
+                        See All Industries <ArrowRight className="ml-1 h-4 w-4" />
+                      </Link>
+                    </div>
+                    <Separator className="mb-4 bg-border" />
+                  </>
+                )}
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                   <div>
-                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Core Pillars</h4>
+                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col1Title}</h4>
                     <div className="space-y-1"> 
                       {firstColumnItems.map((service) => (
                         <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
@@ -121,6 +142,11 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                               <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
                                 {service.title}
                               </p>
+                              {service.description && !isIndustries && ( // Show description only for services, not industries main items
+                                 <p className="text-xs text-card-foreground/70 group-hover/service-item:text-primary/80 transition-colors duration-150 mt-0.5">
+                                  {service.description}
+                                </p>
+                              )}
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
@@ -143,7 +169,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">Strategic Focus</h4>
+                    <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col2Title}</h4>
                      <div className="space-y-1"> 
                       {secondColumnItems.map((service) => (
                          <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
@@ -159,6 +185,11 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                               <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
                                 {service.title}
                               </p>
+                               {service.description && !isIndustries && ( // Show description only for services
+                                 <p className="text-xs text-card-foreground/70 group-hover/service-item:text-primary/80 transition-colors duration-150 mt-0.5">
+                                  {service.description}
+                                </p>
+                              )}
                             </div>
                           </Link>
                           {service.subServices && service.subServices.length > 0 && (
@@ -185,7 +216,6 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
             </HoverCard>
           );
         } else if (item.children && item.children.length > 0) {
-          // SIMPLE DROPDOWN (Desktop or Mobile)
           const triggerContent = (
             <>
               {item.label}
@@ -252,7 +282,6 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
             </DropdownMenu>
           );
         } else if (item.href) {
-          // REGULAR LINK or MOBILE "GOSITE-STYLE" LIST
           if (isMobile && item.serviceItems && item.serviceItems.length > 0) {
              return (
                 <div key={item.label} className="w-full">
@@ -304,4 +333,3 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
     </>
   );
 }
-

@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Mountain, Search, BarChart3, Settings, Lightbulb, TrendingUp, Brain, Target } from "lucide-react"; // Added Brain, Target
+import { Menu, Mountain, Search, BarChart3, Settings, Lightbulb, TrendingUp, ShoppingCart, Apple, Factory } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { NavLinks, type NavItem } from "./nav-links";
@@ -20,7 +20,7 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
     ]
   },
   {
-    icon: Settings, // Keeping Settings for OpEx as it's more encompassing than Target for the main category
+    icon: Settings,
     title: "Operational Excellence",
     description: "Optimize processes, boost efficiency.",
     href: "/services/operational-excellence",
@@ -54,12 +54,39 @@ const serviceItemsForMegaMenu: NavItem['serviceItems'] = [
   },
 ];
 
+const industryItemsForMegaMenu: NavItem['serviceItems'] = [
+  {
+    icon: ShoppingCart,
+    title: "FMCG & Retail",
+    description: "Driving growth in fast-moving consumer goods and retail.",
+    href: "/industries/fmcg-retail",
+  },
+  {
+    icon: Apple,
+    title: "Food & Beverage",
+    description: "Innovating for the food and beverage sector.",
+    href: "/industries/food",
+  },
+  {
+    icon: Factory,
+    title: "Manufacturing",
+    description: "Optimizing manufacturing processes for the future.",
+    href: "/industries/manufacturing",
+  },
+];
+
 
 const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   {
+    label: "Industries",
+    href: "/industries",
+    serviceItems: industryItemsForMegaMenu,
+    isIndustriesMenu: true, // Flag to identify industries menu for special rendering
+  },
+  {
     label: "Services",
-    href: "/services", // Main services page link
+    href: "/services", 
     serviceItems: serviceItemsForMegaMenu,
   },
   { href: "/about", label: "About Us" },
