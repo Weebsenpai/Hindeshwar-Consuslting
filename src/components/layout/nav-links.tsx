@@ -59,7 +59,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
 
   const navLinkClasses = (href: string | undefined, disabled?: boolean, isTrigger?: boolean, isActive?: boolean) =>
     cn(
-      "text-sm font-medium transition-colors hover:text-primary",
+      "text-sm mx-2 font-medium transition-colors hover:text-primary",
       isActive ? "text-primary font-semibold" : "text-muted-foreground",
       disabled && "pointer-events-none opacity-50",
       isMobile

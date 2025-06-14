@@ -87,7 +87,6 @@ const navItems: NavItem[] = [
   },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
-  { href: "/cta-generator", label: "AI Tools" },
 ];
 
 export function Header() {
