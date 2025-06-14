@@ -64,7 +64,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
       disabled && "pointer-events-none opacity-50",
       isMobile
         ? "block rounded-md px-3 py-2 text-base hover:bg-accent hover:text-accent-foreground w-full text-left"
-        : "px-3 py-2 rounded-md",
+        : "px-2 py-2 rounded-md", // Reduced px from 3 to 2
       !isMobile && isTrigger && "cursor-pointer flex items-center gap-1 group"
     );
 
@@ -124,22 +124,23 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                     <Separator className="mb-4 bg-border" />
                   </>
                 )}
-                <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                <div className={cn("grid gap-x-6 gap-y-4", isIndustries ? "grid-cols-2" : "grid-cols-2")}>
                   {isIndustries ? (
-                    item.serviceItems.map((service) => (
-                      <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
+                    item.serviceItems.map((industryItem) => (
+                      <div key={industryItem.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg transition-all duration-200 ease-in-out">
                         <Link
-                          href={service.href}
+                          href={industryItem.href}
                           className="flex items-start gap-3"
                           prefetch={false}
                         >
                           <div className="text-primary mt-1 flex-shrink-0">
-                            <service.icon className="h-5 w-5" />
+                            <industryItem.icon className="h-5 w-5" />
                           </div>
                           <div className="flex-grow">
                             <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
-                              {service.title}
+                              {industryItem.title}
                             </p>
+                           
                           </div>
                         </Link>
                       </div>
@@ -150,37 +151,37 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                         <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col1TitleServices}</h4>
                         <div className="space-y-1"> 
                           {firstColumnItemsServices.map((service) => (
-                            <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
-                              <Link
-                                href={service.href}
-                                className="flex items-start gap-3"
-                                prefetch={false}
-                              >
-                                <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
-                                  <service.icon className="h-5 w-5" />
-                                </div>
-                                <div className="flex-grow">
-                                  <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
-                                    {service.title}
-                                  </p>
-                                </div>
-                              </Link>
-                              {service.subServices && service.subServices.length > 0 && (
-                                <ul className="mt-1.5 space-y-1 pl-8 list-none">
-                                  {service.subServices.map((subService) => (
-                                    <li key={subService.href}>
-                                      <Link
-                                        href={subService.href}
-                                        className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
-                                        prefetch={false}
-                                      >
-                                        {subService.label}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-                            </div>
+                             <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg transition-all duration-200 ease-in-out">
+                                <Link
+                                  href={service.href}
+                                  className="flex items-start gap-3"
+                                  prefetch={false}
+                                >
+                                  <div className="text-primary group-hover/service-item:text-primary mt-1 flex-shrink-0">
+                                    <service.icon className="h-5 w-5" />
+                                  </div>
+                                  <div className="flex-grow">
+                                    <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
+                                      {service.title}
+                                    </p>
+                                  </div>
+                                </Link>
+                                {service.subServices && service.subServices.length > 0 && (
+                                  <ul className="mt-1.5 space-y-1 pl-8 list-none">
+                                    {service.subServices.map((subService) => (
+                                      <li key={subService.href}>
+                                        <Link
+                                          href={subService.href}
+                                          className="block text-xs text-card-foreground/70 hover:text-primary hover:underline transition-colors duration-150"
+                                          prefetch={false}
+                                        >
+                                          {subService.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
                           ))}
                         </div>
                       </div>
@@ -188,7 +189,7 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                         <h4 className="font-headline text-[0.9rem] font-semibold text-card-foreground mb-2">{col2TitleServices}</h4>
                          <div className="space-y-1"> 
                           {secondColumnItemsServices.map((service) => (
-                            <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg border border-transparent transition-all duration-200 ease-in-out">
+                            <div key={service.title} className="group/service-item flex flex-col p-3 -m-3 rounded-lg transition-all duration-200 ease-in-out">
                               <Link
                                 href={service.href}
                                 className="flex items-start gap-3"
@@ -201,9 +202,10 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
                                   <p className="font-semibold text-card-foreground group-hover/service-item:text-primary transition-colors duration-150 text-sm">
                                     {service.title}
                                   </p>
+                                  
                                 </div>
                               </Link>
-                              {service.subServices && service.subServices.length > 0 && (
+                               {service.subServices && service.subServices.length > 0 && (
                                 <ul className="mt-1.5 space-y-1 pl-8 list-none">
                                   {service.subServices.map((subService) => (
                                     <li key={subService.href}>
@@ -346,5 +348,3 @@ export function NavLinks({ items, isMobile = false }: NavLinksProps) {
     </>
   );
 }
-
-    

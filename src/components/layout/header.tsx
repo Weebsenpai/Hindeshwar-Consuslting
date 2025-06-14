@@ -100,7 +100,7 @@ export function Header() {
         </Link>
         
         <div className="flex items-center gap-4">
-          <nav className="hidden items-center gap-2 md:flex md:ml-8">
+          <nav className="hidden items-center gap-1 md:flex"> {/* Reduced gap from 2 to 1 */}
             <NavLinks items={navItems} />
           </nav>
           <div className="hidden md:flex items-center gap-2">
