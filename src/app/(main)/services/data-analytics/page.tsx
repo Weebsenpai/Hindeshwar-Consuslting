@@ -3,6 +3,9 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import strategyImg from "@/assets/images/strategy.jpg"
+import architectureImg from "@/assets/images/architecture.jpg"
+import dataVisualizationImg from "@/assets/images/dataVisualZtn.jpg"
 
 const pageData = {
   mainTitle: "Data & Analytics Services",
@@ -29,7 +32,7 @@ const pageData = {
           </ul>
         </>
       ),
-      imageSrc: "https://placehold.co/600x400.png",
+      imageSrc: strategyImg,
       imageAlt: "Data Strategy & Analysis - Hindeshwar Consulting",
       imageHint: "analytics strategy charts"
     },
@@ -54,7 +57,7 @@ const pageData = {
           </ul>
         </>
       ),
-      imageSrc: "https://placehold.co/600x400.png",
+      imageSrc: architectureImg,
       imageAlt: "Data Architecture & Modelling - Hindeshwar Consulting",
       imageHint: "data architecture network"
     },
@@ -79,7 +82,7 @@ const pageData = {
           </ul>
         </>
       ),
-      imageSrc: "https://placehold.co/600x400.png",
+      imageSrc: dataVisualizationImg,
       imageAlt: "Data Visualisation - Hindeshwar Consulting",
       imageHint: "charts dashboard visualization"
     }

@@ -1,12 +1,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import heroImage from '@/assets/images/bg.png'
+import ideaImage from '@/assets/images/ideaImg.png'
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowRight, Brain, BarChart3, Lightbulb } from "lucide-react";
 
 export default function HomePage() {
-  const heroImageDataUri = "https://placehold.co/1920x1080.png"; 
+  const heroImageDataUri = heroImage; 
   const heroImagePrompt = "dynamic abstract cityscape";
 
   const serviceCards = [
@@ -42,7 +44,7 @@ export default function HomePage() {
             src={heroImageDataUri}
             alt="Global business strategy for Hindeshwar Consulting"
             fill
-            className="opacity-20 object-cover"
+            className="opacity-15 object-cover object-[center_20%]"
             data-ai-hint={heroImagePrompt} 
             priority
           />
@@ -127,11 +129,11 @@ export default function HomePage() {
             </div>
             <div className="aspect-video overflow-hidden rounded-lg shadow-2xl">
               <Image
-                src="https://placehold.co/600x400.png"
+                src={ideaImage}
                 alt="Team working collaboratively at Hindeshwar Consulting"
                 width={600}
                 height={400}
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full object-cover transition-transform duration-500 hover:scale-105"
                 data-ai-hint="professionals collaborating office"
               />
             </div>

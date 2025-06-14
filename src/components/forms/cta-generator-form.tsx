@@ -87,7 +87,7 @@ export function CtaGeneratorForm() {
                     <FormControl>
                       <Textarea
                         placeholder="e.g., A hero section for a new SAAS product that helps teams collaborate better."
-                        className="min-h-[120px] bg-input text-input-foreground border-border focus:border-primary"
+                        className="min-h-[120px] !text-white bg-input border-border focus:border-primary"
                         {...field}
                       />
                     </FormControl>
