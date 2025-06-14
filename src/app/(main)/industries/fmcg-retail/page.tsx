@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ShoppingCart, Zap, LineChart, Users } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Zap, LineChart, Users, Settings, Lightbulb, TrendingUp } from "lucide-react";
 
 export default function FmcgRetailPage() {
   return (
@@ -114,6 +114,3 @@ export default function FmcgRetailPage() {
     </div>
   );
 }
-
-// Added missing imports
-import { Settings, TrendingUp } from "lucide-react";
